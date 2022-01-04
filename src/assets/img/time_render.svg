@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="299.501" height="293.821" viewBox="0 0 299.501 293.821">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.325" y1="-0.184" x2="0.587" y2="1.107" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2225ff"/>
+      <stop offset="0" stop-color="#ff046e"/>
+      <stop offset="1" stop-color="#2225ff"/>
+      <stop offset="1" stop-color="#7c5b17"/>
+    </linearGradient>
+  </defs>
+  <g id="time_render" transform="translate(314.352 55.927) rotate(102)">
+    <path id="Segment" d="M0,0A134.559,134.559,0,0,1,73.209,21.668L63.451,36.717A116.6,116.6,0,0,0,0,17.933Z" transform="translate(134.492 0)" fill="#e2e2e2"/>
+    <path id="Segment-2" data-name="Segment" d="M246.436,193.865A134.5,134.5,0,1,1,72.431,0L80.71,15.9a116.561,116.561,0,1,0,150.8,168.028Z" transform="translate(0 15.183)" fill="url(#linear-gradient)"/>
+    <path id="Segment-3" data-name="Segment" d="M0,15.183A134.537,134.537,0,0,1,62.061,0V17.933A116.6,116.6,0,0,0,8.279,31.083Z" transform="translate(72.431 0)" fill="#e2e2e2"/>
+  </g>
+</svg>
