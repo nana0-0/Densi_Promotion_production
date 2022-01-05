@@ -7,8 +7,8 @@ import tokyo_img from "./assets/img/question1_tokyo.png";
 import chiba_img from "./assets/img/question1_chiba.png";
 import seiryo_img from "./assets/img/question1_seiryo.png";
 import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import { useContext } from "react";
+import { GlobalContext } from "./index.js";
 
 function Question1() {
     const { context, setContext } = useContext(GlobalContext);
@@ -99,89 +99,113 @@ function Question1() {
 
     return (
         <>
-            <main className="queation-wrapper">
-                <dl className="question-title">
-                    <dt>
-                        <h4>Q.01</h4>
-                    </dt>
-                    <dd>
-                        <h5>どこのスクールを希望しますか？</h5>
-                    </dd>
-                </dl>
-                <ul className="question-select">
-                    <li>
+            <div className="q1bg">
+                <main className="queation-wrapper">
+                    <dl className="question-title">
+                        <dt>
+                            <h4>Q.01</h4>
+                        </dt>
+                        <dd>
+                            <h5>どこのスクールを希望しますか？</h5>
+                        </dd>
+                    </dl>
+                    <ul className="question-select">
+                        <li>
+                            <button
+                                onClick={() => setSelect("oosaka")}
+                                className={o_state}
+                                id="oosaka-btn"
+                            >
+                                大阪
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("seiryo")}
+                                className={s_state}
+                                id="seiryo-btn"
+                            >
+                                石川
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("tokyo")}
+                                className={t_state}
+                                id="tokyo-btn"
+                            >
+                                東京
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("chiba")}
+                                className={c_state}
+                                id="chiba-btn"
+                            >
+                                千葉
+                            </button>
+                        </li>
+                    </ul>
+                    <figure className="question1-japan-img">
+                        <img src={japan_img} alt="日本地図" />
+                    </figure>
+                    <figure className="question-img-circle">
+                        <img src={selected_img} alt="大阪の画像" />
+                    </figure>
+                    <div className="select-btn-flex">
                         <button
-                            onClick={() => setSelect("oosaka")}
-                            className={o_state}
-                            id="oosaka-btn"
-                        >
-                            大阪
-                        </button>
-                    </li>
-                    <li>
+                            onClick={() =>
+                                select === "oosaka"
+                                    ? setSelect("chiba")
+                                    : select === "chiba"
+                                    ? setSelect("tokyo")
+                                    : select === "tokyo"
+                                    ? setSelect("seiryo")
+                                    : select === "seiryo"
+                                    ? setSelect("oosaka")
+                                    : ""
+                            }
+                            className="btn-left"
+                        ></button>
                         <button
-                            onClick={() => setSelect("seiryo")}
-                            className={s_state}
-                            id="seiryo-btn"
-                        >
-                            石川
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => setSelect("tokyo")}
-                            className={t_state}
-                            id="tokyo-btn"
-                        >
-                            東京
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => setSelect("chiba")}
-                            className={c_state}
-                            id="chiba-btn"
-                        >
-                            千葉
-                        </button>
-                    </li>
-                </ul>
-                <figure className="question1-japan-img">
-                    <img src={japan_img} alt="日本地図" />
-                </figure>
-                <figure className="question-img-circle">
-                    <img src={selected_img} alt="大阪の画像" />
-                </figure>
-                <div className="select-btn-flex">
-                    <button
-                        onClick={() => select==="oosaka" ? setSelect("chiba") : select==="chiba" ? setSelect("tokyo") : select === "tokyo" ? setSelect("seiryo"): select==="seiryo" ? setSelect("oosaka"):''}
-                        className="btn-left"
-                    >
-                    </button>
-                    <button  onClick={() => select==="oosaka" ? setSelect("seiryo") : select==="seiryo" ? setSelect("tokyo") : select === "tokyo" ? setSelect("chiba"): select==="chiba" ? setSelect("oosaka"):''} className="btn-right"></button>
-                </div>
-            </main>
-            <img
-                src={selected_img_bg}
-                alt="土台"
-                className="question-img-circle-bg"
-            />
+                            onClick={() =>
+                                select === "oosaka"
+                                    ? setSelect("seiryo")
+                                    : select === "seiryo"
+                                    ? setSelect("tokyo")
+                                    : select === "tokyo"
+                                    ? setSelect("chiba")
+                                    : select === "chiba"
+                                    ? setSelect("oosaka")
+                                    : ""
+                            }
+                            className="btn-right"
+                        ></button>
+                    </div>
+                </main>
+            </div>
+            {/* <img
+                    src={selected_img_bg}
+                    alt="土台"
+                    className="question-img-circle-bg"
+                /> */}
             <div className="question-footer">
                 <Link to="/question2" className="question-enter-btn">
                     決定
                 </Link>
-                <ul className="questions-active-flex">
-                <li className="active-primary"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-                <li className="active-normal"></li>
-            </ul>
+                <div className="questions-active-flex">
+                <Link to="/question1"><p className="active-primary"></p></Link>
+                <Link to="/question2"><p  className="active-normal"></p></Link>
+                <Link to="/question3"><p  className="active-normal"></p></Link>
+                <Link to="/question4"><p  className="active-normal"></p></Link>
+                <Link to="/question5"><p  className="active-normal"></p></Link>
+                <Link to="/question6"><p  className="active-normal"></p></Link>
+                <Link to="/question7"><p  className="active-normal"></p></Link>
+                <Link to="/question8"><p  className="active-normal"></p></Link>
+                </div>
             </div>
-       </>
+        </>
     );
 }
 

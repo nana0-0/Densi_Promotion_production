@@ -61,16 +61,16 @@ function Question6() {
                 <Link to="/question7" className="question-enter-btn">
                     決定
                 </Link>
-                <ul className="questions-active-flex">
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-primary"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                </ul>
+                <div className="questions-active-flex">
+                <Link to="/question1"><p  className="active-normal"></p></Link>
+                <Link to="/question2"><p  className="active-normal"></p></Link>
+                <Link to="/question3"><p  className="active-normal"></p></Link>
+                <Link to="/question4"><p  className="active-normal"></p></Link>
+                <Link to="/question5"><p  className="active-normal"></p></Link>
+                <Link to="/question6"><p className="active-primary"></p></Link>
+                <Link to="/question7"><p  className="active-normal"></p></Link>
+                <Link to="/question8"><p  className="active-normal"></p></Link>
+                </div>
             </div>
         </>
     );

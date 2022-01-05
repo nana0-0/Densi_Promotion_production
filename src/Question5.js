@@ -14,39 +14,8 @@ function Question5() {
 
     let ratio_style;
     let raito_init = "50%";
-    let a;
-
-    console.log(30 + 3 * (height - 130))
-    if (height < 130) {
-        raito_init = "100%";
-    } else if (height <= 135) {
-        a = height - (30 + 3 * (height - 130));
-        raito_init = a + "%";
-    } else if (height <= 140) {
-        a = height - (30 + 3 * (height - 130));
-        raito_init = a + "%";
-    } else if(height <=145){
-        raito_init = "73%";
-    }else if (height <= 150) {
-        a = height -80-( (height-150+1)*4)
-        raito_init = a + "%";
-    }else if(height <=155){
-        raito_init = "58%";
-    }else if (height <= 160) {
-        raito_init = "50%";
-    } else if(height <=165){
-        raito_init = "42%";
-    }else if (height <= 170) {
-        raito_init = "34%";
-    }else if(height <=175){
-        raito_init = "26%";
-    }else if (height <= 180) {
-        raito_init = "18%";
-    }else if(height <= 185){
-        raito_init = "11%";
-    } else if (height <= 190) {
-        raito_init = "0%";
-    }
+    
+    raito_init = ((190-height)*1.7) + "%";
 
     ratio_style = {
         width: "6px",
@@ -60,8 +29,6 @@ function Question5() {
         "borderRadius": "20px",
         "marginRight": "10px",
     };
-
-    console.log(height);
     return (
         <>
             <main className="queation-wrapper">
@@ -103,16 +70,16 @@ function Question5() {
                 <Link to="/question6" className="question-enter-btn">
                     決定
                 </Link>
-                <ul className="questions-active-flex">
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-primary"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                </ul>
+                <div className="questions-active-flex">
+                <Link to="/question1"><p  className="active-normal"></p></Link>
+                <Link to="/question2"><p  className="active-normal"></p></Link>
+                <Link to="/question3"><p  className="active-normal"></p></Link>
+                <Link to="/question4"><p  className="active-normal"></p></Link>
+                <Link to="/question5"><p className="active-primary"></p></Link>
+                <Link to="/question6"><p  className="active-normal"></p></Link>
+                <Link to="/question7"><p  className="active-normal"></p></Link>
+                <Link to="/question8"><p  className="active-normal"></p></Link>
+                </div>
             </div>
         </>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/css/nomaraize.css";
-import "./assets/css/style.css";
+import "./assets/css/style.scss";
 import Top from "./Top";
 import Question1 from "./Question1";
 import Question2 from "./Question2";
@@ -21,6 +21,7 @@ export const GlobalContext = createContext(null);
 
 function Index() {
     const [context, setContext] = useState({
+        pagetop: false,
         gender: "male",
         select: "oosaka",
         confidence: true,

@@ -5,27 +5,70 @@ import { useEffect } from "react";
 import result_now_img from "./assets/img/result-now-img.png";
 import result_nigate_img from "./assets/img/result-nigate-img.png";
 import result_tokui_img from "./assets/img/result-tokui-img.png";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import { useContext } from "react";
+import { GlobalContext } from "./index.js";
+import slider_btn_left from "./assets/img/result_slider_left.png";
+import slider_btn_right from "./assets/img/result_slider_right.png";
+import slider_img from "./assets/img/result_slider_img.png";
+import { useState } from "react";
+
 function Result() {
-    useEffect(() => {
-        window.scrollTo(0, 2100);
-    });
     const { context, setContext } = useContext(GlobalContext);
+    let pagetop = context.pagetop;
+    useEffect(() => {
+        if(pagetop===true) {
+        window.scrollTo(0, 2100);
+        setContext({...context, pagetop:false});
+        }
+    });
+
     let gender = context.gender;
     let select = context.select;
+    let confidence = context.confidence;
     let counter = context.counter;
+    let height = context.height;
+    let position = context.position;
+    let tracking = context.tracking;
+    let gkcoach = context.gkcoach;
+    let lawn = context.lawn;
+    let dormitory = context.dormitory;
+    let expedition = context.expedition;
+    let trainer = context.trainer;
+    let knows = context.knows;
+    let institution = context.institution;
+    let physicalcoach = context.physicalcoach;
+    let foreigner = context.foreigner;
+    let sponser = context.sponser;
+    let personalgym = context.personalgym;
 
+    console.log(gender);
     console.log(select);
-
+    console.log(confidence);
     console.log(counter);
+    console.log(height);
+    console.log(position);
+    console.log(tracking);
+    console.log(gkcoach);
+    console.log(lawn);
+    console.log(dormitory);
+    console.log(expedition);
+    console.log(trainer);
+    console.log(knows);
+    console.log(institution);
+    console.log(physicalcoach);
+    console.log(foreigner);
+    console.log(sponser);
+    console.log(personalgym);
+    
+
 
     let gender_text;
-    if(gender === "woman"){
+    if (gender === "woman") {
         gender_text = "OG";
-    }else{
+    } else {
         gender_text = "OB";
     }
+    const [slider, setSlider] = useState(0);
     return (
         <>
             <>
@@ -37,8 +80,10 @@ function Result() {
                         <dl className="result-title">
                             <dt>あなたの能力に近い</dt>
                             <dd>
-                                <em className="result-dot space">{gender_text}選手</em>を
-                                <em>紹介します</em>
+                                <em className="result-dot space">
+                                    {gender_text}選手
+                                </em>
+                                を<em>紹介します</em>
                             </dd>
                         </dl>
                         <h5 className="result-sbtitle">{data.seiryo.og[0]}</h5>
@@ -80,10 +125,7 @@ function Result() {
                             </li>
                         </ul>
                         <figure className="result-nigate-img">
-                            <img
-                                src={result_nigate_img}
-                                alt=""
-                            />
+                            <img src={result_nigate_img} alt="" />
                         </figure>
                         <section className="result-now">
                             <dl>
@@ -112,10 +154,7 @@ function Result() {
                             </li>
                         </ul>
                         <figure className="result_tokui_img">
-                            <img
-                                src={result_tokui_img}
-                                alt=""
-                            />
+                            <img src={result_tokui_img} alt="" />
                         </figure>
                         <section className="result-now">
                             <dl>
@@ -135,19 +174,36 @@ function Result() {
                                 <em>紹介します</em>
                             </dd>
                         </dl>
-                        <figure className="result_tokui_img">
-                            <img
-                                src={result_tokui_img}
-                                alt=""
-                            />
-                        </figure>
+                        <ul className="slider_btn_flex">
+                            <li>
+                                <button className="btn-reset" onClick={()=> setSlider((slider-1+6)%6)}>
+                                <img src={slider_btn_left} alt="leftボタン" />
+                                </button>
+                            </li>
+                            <li>
+                            <button className="btn-reset" onClick={()=> setSlider((slider+1)%6)}>
+                                <img src={slider_btn_right} alt="rightボタン" />
+                                </button>
+                            </li>
+                        </ul>
+                        <div className="slider-img-flex">
+                            <figure className="result_slider_img">
+                                <img src={slider_img} alt="" />
+                            </figure>
+                            <p>SOLTILO CHIBA FC</p>
+                        </div>
                         <h5 className="result-sbtitle">
-                            {data.tokui.nigate[0]}
+                            {data.slider.player[slider]}
                         </h5>
-                       <p>{data.slider.p}</p>
-                       <ul>
-                           <li></li>
-                       </ul>
+                        <p className="slider-p">{data.slider.p[slider]}</p>
+                        <div className="slider-active-flex">
+                        <button onClick={() => setSlider(0)}><p className={slider===0?"slider-active-primary":"slider-active-normal"}></p></button>
+                        <button onClick={() => setSlider(1)}><p className={slider===1?"slider-active-primary":"slider-active-normal"}></p></button>
+                        <button onClick={() => setSlider(2)}><p className={slider===2?"slider-active-primary":"slider-active-normal"}></p></button>
+                        <button onClick={() => setSlider(3)}><p className={slider===3?"slider-active-primary":"slider-active-normal"}></p></button>
+                        <button onClick={() => setSlider(4)}><p className={slider===4?"slider-active-primary":"slider-active-normal"}></p></button>
+                        <button onClick={() => setSlider(5)}><p className={slider===5?"slider-active-primary":"slider-active-normal"}></p></button>
+                        </div>
                     </section>
                 </article>
                 <Footer />

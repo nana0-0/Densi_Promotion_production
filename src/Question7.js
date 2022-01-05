@@ -7,8 +7,8 @@ import df_img from "./assets/img/question7_df.png";
 import mf_img from "./assets/img/question7_mf.png";
 import fw_img from "./assets/img/question7_fw.png";
 import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import { useContext } from "react";
+import { GlobalContext } from "./index.js";
 
 function Question7() {
     const { context, setContext } = useContext(GlobalContext);
@@ -78,13 +78,13 @@ function Question7() {
                 sheet.cssRules.length
             );
             sheet.insertRule(
-              ".pin_text {  top: 279px; }",
-              sheet.cssRules.length
-          );
-          sheet.insertRule(
-              ".pin_text {   left: 111px; }",
-              sheet.cssRules.length
-          );
+                ".pin_text {  top: 279px; }",
+                sheet.cssRules.length
+            );
+            sheet.insertRule(
+                ".pin_text {   left: 111px; }",
+                sheet.cssRules.length
+            );
             break;
         case "mf":
             selected_img = toggle[2];
@@ -101,13 +101,13 @@ function Question7() {
                 sheet.cssRules.length
             );
             sheet.insertRule(
-              ".pin_text {  top: 234px; }",
-              sheet.cssRules.length
-          );
-          sheet.insertRule(
-              ".pin_text {   left: 190px; }",
-              sheet.cssRules.length
-          );
+                ".pin_text {  top: 234px; }",
+                sheet.cssRules.length
+            );
+            sheet.insertRule(
+                ".pin_text {   left: 190px; }",
+                sheet.cssRules.length
+            );
             break;
         case "fw":
             selected_img = toggle[3];
@@ -124,13 +124,13 @@ function Question7() {
                 sheet.cssRules.length
             );
             sheet.insertRule(
-              ".pin_text {  top: 203px; }",
-              sheet.cssRules.length
-          );
-          sheet.insertRule(
-              ".pin_text {   left: 147px; }",
-              sheet.cssRules.length
-          );
+                ".pin_text {  top: 203px; }",
+                sheet.cssRules.length
+            );
+            sheet.insertRule(
+                ".pin_text {   left: 147px; }",
+                sheet.cssRules.length
+            );
             break;
         default:
             console.log("エラー");
@@ -138,110 +138,107 @@ function Question7() {
 
     return (
         <>
-            <main className="queation-wrapper">
-                <dl className="question-title">
-                    <dt>
-                        <h4>Q.07</h4>
-                    </dt>
-                    <dd>
-                        <h5>どこのポジションですか？</h5>
-                    </dd>
-                </dl>
-                <ul className="question-select">
-                    <li>
+            <div className="q1bg">
+                <main className="queation-wrapper">
+                    <dl className="question-title">
+                        <dt>
+                            <h4>Q.07</h4>
+                        </dt>
+                        <dd>
+                            <h5>どこのポジションですか？</h5>
+                        </dd>
+                    </dl>
+                    <ul className="question-select">
+                        <li>
+                            <button
+                                onClick={() => setSelect("gk")}
+                                className={gk_state}
+                                id="gk-btn"
+                            >
+                                GK
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("df")}
+                                className={df_state}
+                                id="df-btn"
+                            >
+                                DF
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("mf")}
+                                className={mf_state}
+                                id="mf-btn"
+                            >
+                                MF
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setSelect("fw")}
+                                className={fw_state}
+                                id="fw-btn"
+                            >
+                                FW
+                            </button>
+                        </li>
+                    </ul>
+                    <p className="pin_text">{potision.toUpperCase()}</p>
+                    <figure className="question7-japan-img">
+                        <img src={field_img} alt="サッカーのフィールド" />
+                    </figure>
+                    <figure className="question-img-circle">
+                        <img src={selected_img} alt="GKの画像" />
+                    </figure>
+                    <div className="select-btn-flex-potision">
                         <button
-                            onClick={() => setSelect("gk")}
-                            className={gk_state}
-                            id="gk-btn"
-                        >
-                            GK
-                        </button>
-                    </li>
-                    <li>
+                            onClick={() =>
+                                potision === "gk"
+                                    ? setSelect("fw")
+                                    : potision === "fw"
+                                    ? setSelect("mf")
+                                    : potision === "mf"
+                                    ? setSelect("df")
+                                    : potision === "df"
+                                    ? setSelect("gk")
+                                    : ""
+                            }
+                            className="btn-left"
+                        ></button>
                         <button
-                            onClick={() => setSelect("df")}
-                            className={df_state}
-                            id="df-btn"
-                        >
-                            DF
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => setSelect("mf")}
-                            className={mf_state}
-                            id="mf-btn"
-                        >
-                            MF
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            onClick={() => setSelect("fw")}
-                            className={fw_state}
-                            id="fw-btn"
-                        >
-                            FW
-                        </button>
-                    </li>
-                </ul>
-                <p className="pin_text">{potision.toUpperCase()}</p>
-                <figure className="question7-japan-img">
-                    <img src={field_img} alt="サッカーのフィールド" />
-                </figure>
-                <figure className="question-img-circle">
-                    <img src={selected_img} alt="GKの画像" />
-                </figure>
-                <div className="select-btn-flex-potision">
-                    <button
-                        onClick={() =>
-                            potision === "gk"
-                                ? setSelect("fw")
-                                : potision === "fw"
-                                ? setSelect("mf")
-                                : potision === "mf"
-                                ? setSelect("df")
-                                : potision === "df"
-                                ? setSelect("gk")
-                                : ""
-                        }
-                        className="btn-left"
-                    ></button>
-                    <button
-                        onClick={() =>
-                            potision === "gk"
-                                ? setSelect("df")
-                                : potision === "df"
-                                ? setSelect("mf")
-                                : potision === "mf"
-                                ? setSelect("fw")
-                                : potision === "fw"
-                                ? setSelect("gk")
-                                : ""
-                        }
-                        className="btn-right"
-                    ></button>
-                </div>
-            </main>
-            <img
-                src={selected_img_bg}
-                alt="土台"
-                className="question-img-circle-bg"
-            />
+                            onClick={() =>
+                                potision === "gk"
+                                    ? setSelect("df")
+                                    : potision === "df"
+                                    ? setSelect("mf")
+                                    : potision === "mf"
+                                    ? setSelect("fw")
+                                    : potision === "fw"
+                                    ? setSelect("gk")
+                                    : ""
+                            }
+                            className="btn-right"
+                        ></button>
+                    </div>
+                </main>
+            </div>
             <div className="question-footer">
                 <Link to="/question8" className="question-enter-btn">
                     決定
                 </Link>
-                <ul className="questions-active-flex">
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-normal"></li>
-                    <li className="active-primary"></li>
-                    <li className="active-normal"></li>
-                </ul>
+                <div className="questions-active-flex">
+                <Link to="/question1"><p  className="active-normal"></p></Link>
+                <Link to="/question2"><p  className="active-normal"></p></Link>
+                <Link to="/question3"><p  className="active-normal"></p></Link>
+                <Link to="/question4"><p  className="active-normal"></p></Link>
+                <Link to="/question5"><p  className="active-normal"></p></Link>
+                <Link to="/question6"><p  className="active-normal"></p></Link>
+                <Link to="/question7"><p className="active-primary"></p></Link>
+                <Link to="/question8"><p  className="active-normal"></p></Link>
+                </div>
             </div>
         </>
     );
