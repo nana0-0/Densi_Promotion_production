@@ -9,7 +9,13 @@ import { useContext } from "react";
 import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
 import slider_btn_right from "./assets/img/result_slider_right.png";
-import slider_img from "./assets/img/result_slider_img.png";
+import slider_img0 from "./assets/img/result_slider_img0.png";
+import slider_img1 from "./assets/img/result_slider_img1.png";
+import slider_img2 from "./assets/img/result_slider_img2.png";
+import slider_img3 from "./assets/img/result_slider_img3.png";
+import slider_img4 from "./assets/img/result_slider_img4.png";
+import slider_img5 from "./assets/img/result_slider_img5.png";
+
 import { useState } from "react";
 
 function Result() {
@@ -21,6 +27,8 @@ function Result() {
         setContext({...context, pagetop:false});
         }
     });
+
+    let img_slider = [slider_img0,slider_img1,slider_img2,slider_img3,slider_img4,slider_img5];
 
     let gender = context.gender;
     let select = context.select;
@@ -188,7 +196,7 @@ function Result() {
                         </ul>
                         <div className="slider-img-flex">
                             <figure className="result_slider_img">
-                                <img src={slider_img} alt="" />
+                                <img src={img_slider[slider]} alt="" />
                             </figure>
                             <p>SOLTILO CHIBA FC</p>
                         </div>
