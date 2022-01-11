@@ -29,7 +29,7 @@ function Question6() {
                         <h4>Q.06</h4>
                     </dt>
                     <dd>
-                        <h5>体力に自信はありますか？</h5>
+                        <h5>利き足はどっちですか？</h5>
                     </dd>
                 </dl>
                 <ul className="question-choice">

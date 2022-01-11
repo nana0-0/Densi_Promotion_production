@@ -3,8 +3,13 @@ import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
 import result_now_img from "./assets/img/result-now-img.png";
-import result_nigate_img from "./assets/img/result-nigate-img.png";
-import result_tokui_img from "./assets/img/result-tokui-img.png";
+import result_weak_img0 from "./assets/img/result_weak_img0.png";
+import result_weak_img1 from "./assets/img/result_weak_img1.png";
+import result_weak_img2 from "./assets/img/result_weak_img2.png";
+import result_good_chiba_kantoku from "./assets/img/result_chiba_kantoku.png"; 
+import result_good_chiba_athletic from "./assets/img/result_chiba_athletic.png"; 
+import result_good_chiba_gk from "./assets/img/result_chiba_gk.png"; 
+import result_good_chiba_pysical from "./assets/img/result_chiba_pysical.png"; 
 import { useContext } from "react";
 import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
@@ -23,7 +28,7 @@ function Result() {
     let pagetop = context.pagetop;
     useEffect(() => {
         if(pagetop===true) {
-        window.scrollTo(0, 2100);
+        window.scrollTo(0, 2200);
         setContext({...context, pagetop:false});
         }
     });
@@ -35,7 +40,7 @@ function Result() {
     let confidence = context.confidence;
     let counter = context.counter;
     let height = context.height;
-    let position = context.position;
+    let potision = context.potision;
     let tracking = context.tracking;
     let gkcoach = context.gkcoach;
     let lawn = context.lawn;
@@ -49,12 +54,42 @@ function Result() {
     let sponser = context.sponser;
     let personalgym = context.personalgym;
 
+    let weak_array_number;
+    let weak_img;
+    if(confidence===false){
+        weak_array_number = 0;
+        weak_img = result_weak_img0;
+    }else if(confidence===true && (counter<8 || height>165)){
+        weak_array_number =1;
+        weak_img = result_weak_img1;
+    }else{
+        weak_array_number =2;
+        weak_img = result_weak_img2;
+    }
+
+    let result_good_selected = 'data.good.chiba';
+    let result_good_img = result_good_chiba_kantoku;
+    let result_good_array = 0;
+    if(potision==="gk"){
+        result_good_img = result_good_chiba_gk;
+        result_good_array =1;
+    }else if(confidence===true && (counter<8 || height>165)){
+        result_good_img = result_good_chiba_pysical;
+        result_good_array =2;
+    }else if(confidence===false && (counter<8 || height>165)){
+        result_good_img = result_good_chiba_kantoku;
+        result_good_array =0;
+    }else{
+        result_good_img = result_good_chiba_athletic;
+        result_good_array =3;
+    }
+    
     console.log(gender);
     console.log(select);
     console.log(confidence);
     console.log(counter);
     console.log(height);
-    console.log(position);
+    console.log(potision);
     console.log(tracking);
     console.log(gkcoach);
     console.log(lawn);
@@ -67,8 +102,6 @@ function Result() {
     console.log(foreigner);
     console.log(sponser);
     console.log(personalgym);
-    
-
 
     let gender_text;
     if (gender === "woman") {
@@ -125,24 +158,24 @@ function Result() {
                             </dd>
                         </dl>
                         <h5 className="result-sbtitle">
-                            {data.nigate.nigate[0]}
+                            {data.weak.training[weak_array_number]}
                         </h5>
                         <ul>
                             <li className="result-nigate-point1">
-                                {data.nigate.point[0]}
+                                {data.weak.point[weak_array_number]}
                             </li>
                         </ul>
                         <figure className="result-nigate-img">
-                            <img src={result_nigate_img} alt="" />
+                            <img src={weak_img} alt="" />
                         </figure>
                         <section className="result-now">
                             <dl>
-                                <dt>{data.nigate.dt[0]}</dt>
+                                <dt>{data.weak.dt[0]}</dt>
                                 <dd className="result-team">
-                                    {data.nigate.dd[0]}
+                                    {data.weak.dd[0]}
                                 </dd>
                             </dl>
-                            <p>{data.nigate.p[0]}</p>
+                            <p>{data.weak.p[weak_array_number]}</p>
                         </section>
                     </section>
                     <section>
@@ -154,24 +187,24 @@ function Result() {
                             </dd>
                         </dl>
                         <h5 className="result-sbtitle">
-                            {data.tokui.nigate[0]}
+                            {data.good.chiba.staff[result_good_array]}
                         </h5>
                         <ul>
                             <li className="result-tokui-point1">
-                                {data.tokui.point[0]}
+                                {data.good.chiba.point[result_good_array]}
                             </li>
                         </ul>
                         <figure className="result_tokui_img">
-                            <img src={result_tokui_img} alt="" />
+                            <img src={result_good_img} alt="" />
                         </figure>
                         <section className="result-now">
                             <dl>
-                                <dt>{data.tokui.dt[0]}</dt>
+                                <dt>{data.good.chiba.dt[0]}</dt>
                                 <dd className="result-team">
-                                    {data.tokui.dd[0]}
+                                    {data.good.chiba.dd[result_good_array]}
                                 </dd>
                             </dl>
-                            <p>{data.tokui.p[0]}</p>
+                            <p>{data.good.chiba.p[result_good_array]}</p>
                         </section>
                     </section>
                     <section>

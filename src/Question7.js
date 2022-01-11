@@ -6,9 +6,9 @@ import gk_img from "./assets/img/question7_gk.png";
 import df_img from "./assets/img/question7_df.png";
 import mf_img from "./assets/img/question7_mf.png";
 import fw_img from "./assets/img/question7_fw.png";
-import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
 import { useContext } from "react";
 import { GlobalContext } from "./index.js";
+import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
 
 function Question7() {
     const { context, setContext } = useContext(GlobalContext);
