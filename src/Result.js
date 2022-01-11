@@ -6,10 +6,15 @@ import result_now_img from "./assets/img/result-now-img.png";
 import result_weak_img0 from "./assets/img/result_weak_img0.png";
 import result_weak_img1 from "./assets/img/result_weak_img1.png";
 import result_weak_img2 from "./assets/img/result_weak_img2.png";
-import result_good_chiba_kantoku from "./assets/img/result_chiba_kantoku.png"; 
-import result_good_chiba_athletic from "./assets/img/result_chiba_athletic.png"; 
-import result_good_chiba_gk from "./assets/img/result_chiba_gk.png"; 
-import result_good_chiba_pysical from "./assets/img/result_chiba_pysical.png"; 
+import result_good_chiba_kantoku from "./assets/img/result_chiba_kantoku.png";
+import result_good_chiba_athletic from "./assets/img/result_chiba_athletic.png";
+import result_good_chiba_gk from "./assets/img/result_chiba_gk.png";
+import result_good_chiba_pysical from "./assets/img/result_chiba_pysical.png";
+import result_good_oosaka_head from "./assets/img/result_oosaka_head.png";
+import result_good_seiryo_head_l from "./assets/img/result_seiryo_head_l.png";
+import result_good_seiryo_head from "./assets/img/result_seiryo_head.png";
+import result_good_tokyo_head from "./assets/img/result_tokyo_head.png";
+import result_good_tokyo_athletic from "./assets/img/result_tokyo_athletic.png";
 import { useContext } from "react";
 import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
@@ -27,13 +32,20 @@ function Result() {
     const { context, setContext } = useContext(GlobalContext);
     let pagetop = context.pagetop;
     useEffect(() => {
-        if(pagetop===true) {
-        window.scrollTo(0, 2200);
-        setContext({...context, pagetop:false});
+        if (pagetop === true) {
+            window.scrollTo(0, 2200);
+            setContext({ ...context, pagetop: false });
         }
     });
 
-    let img_slider = [slider_img0,slider_img1,slider_img2,slider_img3,slider_img4,slider_img5];
+    let img_slider = [
+        slider_img0,
+        slider_img1,
+        slider_img2,
+        slider_img3,
+        slider_img4,
+        slider_img5,
+    ];
 
     let gender = context.gender;
     let select = context.select;
@@ -56,34 +68,101 @@ function Result() {
 
     let weak_array_number;
     let weak_img;
-    if(confidence===false){
+    if (confidence === false) {
         weak_array_number = 0;
         weak_img = result_weak_img0;
-    }else if(confidence===true && (counter<8 || height>165)){
-        weak_array_number =1;
+    } else if (confidence === true && (counter < 8 || height > 165)) {
+        weak_array_number = 1;
         weak_img = result_weak_img1;
-    }else{
-        weak_array_number =2;
+    } else {
+        weak_array_number = 2;
         weak_img = result_weak_img2;
     }
 
-    let result_good_selected = 'data.good.chiba';
     let result_good_img = result_good_chiba_kantoku;
     let result_good_array = 0;
-    if(potision==="gk"){
-        result_good_img = result_good_chiba_gk;
-        result_good_array =1;
-    }else if(confidence===true && (counter<8 || height>165)){
-        result_good_img = result_good_chiba_pysical;
-        result_good_array =2;
-    }else if(confidence===false && (counter<8 || height>165)){
-        result_good_img = result_good_chiba_kantoku;
-        result_good_array =0;
-    }else{
-        result_good_img = result_good_chiba_athletic;
-        result_good_array =3;
+    // if (potision === "gk") {
+    //     result_good_img = result_good_chiba_gk;
+    //     result_good_array = 1;
+    // } else if (confidence === true && (counter < 8 || height > 165)) {
+    //     result_good_img = result_good_chiba_pysical;
+    //     result_good_array = 2;
+    // } else if (confidence === false && (counter < 8 || height > 165)) {
+    //     result_good_img = result_good_chiba_kantoku;
+    //     result_good_array = 0;
+    // } else {
+    //     result_good_img = result_good_chiba_athletic;
+    //     result_good_array = 3;
+    // }
+
+    function good_img() {
+        if (select === "chiba") {
+            if (potision === "gk") {
+                result_good_img = result_good_chiba_gk;
+            } else if (confidence === true && (counter < 8 || height > 165)) {
+                result_good_img = result_good_chiba_pysical;
+            } else if (confidence === false && (counter < 8 || height > 165)) {
+                result_good_img = result_good_chiba_kantoku;
+            } else {
+                result_good_img = result_good_chiba_athletic;
+            }
+        } else if (select === "oosaka") {
+            if (potision === "gk") {
+                result_good_img = result_good_seiryo_head_l;
+            } else {
+                result_good_img = result_good_oosaka_head;
+            }
+        } else if (select === "seiryo") {
+            if (gender === "woman") {
+                result_good_img = result_good_seiryo_head_l;
+            } else {
+                result_good_img = result_good_seiryo_head;
+            }
+        } else {
+            if (potision === "gk") {
+                result_good_img = result_good_seiryo_head_l;
+            } else if (confidence === true && (counter < 8 || height > 165)) {
+                result_good_img = result_good_tokyo_head;
+            } else {
+                result_good_img = result_good_tokyo_athletic;
+            }
+        }
+        return result_good_img;
     }
-    
+
+    let good_text = "data.good.chiba.staff[good_array()]";
+
+    function good_array() {
+        if (select === "chiba") {
+            if (potision === "gk") {
+                result_good_array = 1;
+            } else if (confidence === true && (counter < 8 || height > 165)) {
+                result_good_array = 2;
+            } else if (confidence === false && (counter < 8 || height > 165)) {
+                result_good_array = 0;
+            } else {
+                result_good_array = 3;
+            }
+        } else if (select === "oosaka") {
+            if (potision === "gk") {
+                result_good_array = 1;
+            } else {
+                result_good_array = 0;
+            }
+        } else if (select === "seiryo") {
+            result_good_array = 0;
+        } else {
+            if (potision === "gk") {
+                result_good_array = 2;
+            } else if (confidence === true && (counter < 8 || height > 165)) {
+                result_good_array = 0;
+            } else {
+                result_good_array = 1;
+            }
+        }
+        return result_good_array;
+    }
+
     console.log(gender);
     console.log(select);
     console.log(confidence);
@@ -187,24 +266,72 @@ function Result() {
                             </dd>
                         </dl>
                         <h5 className="result-sbtitle">
-                            {data.good.chiba.staff[result_good_array]}
+                            {select === "chiba"
+                                ? data.good.chiba.staff[good_array()]
+                                : select === "oosaka"
+                                ? data.good.oosaka.staff[good_array()]
+                                : select === "tokyo"
+                                ? data.good.tokyo.staff[good_array()]
+                                : select === "seiryo" && gender === "male"
+                                ? data.good.seiryo.boys.staff[good_array()]
+                                : select === "seiryo" && gender === "woman"
+                                ? data.good.seiryo.ladies.staff[good_array()]
+                                : console.log("goodエラー")}
                         </h5>
                         <ul>
                             <li className="result-tokui-point1">
-                                {data.good.chiba.point[result_good_array]}
+                                {select === "chiba"
+                                    ? data.good.chiba.point[good_array()]
+                                    : select === "oosaka"
+                                    ? data.good.oosaka.point[good_array()]
+                                    : select === "tokyo"
+                                    ? data.good.tokyo.point[good_array()]
+                                    : select === "seiryo" && gender === "male"
+                                    ? data.good.seiryo.boys.point[good_array()]
+                                    : select === "seiryo" && gender === "woman"
+                                    ? data.good.seiryo.ladies.point[
+                                          good_array()
+                                      ]
+                                    : console.log("err")}
                             </li>
                         </ul>
                         <figure className="result_tokui_img">
-                            <img src={result_good_img} alt="" />
+                            <img src={good_img()} alt="" />
                         </figure>
                         <section className="result-now">
                             <dl>
                                 <dt>{data.good.chiba.dt[0]}</dt>
                                 <dd className="result-team">
-                                    {data.good.chiba.dd[result_good_array]}
+                                    {select === "chiba"
+                                        ? data.good.chiba.dd[good_array()]
+                                        : select === "oosaka"
+                                        ? data.good.oosaka.dd[good_array()]
+                                        : select === "tokyo"
+                                        ? data.good.tokyo.dd[good_array()]
+                                        : select === "seiryo" &&
+                                          gender === "male"
+                                        ? data.good.seiryo.boys.dd[good_array()]
+                                        : select === "seiryo" &&
+                                          gender === "woman"
+                                        ? data.good.seiryo.ladies.dd[
+                                              good_array()
+                                          ]
+                                        : console.log("err")}
                                 </dd>
                             </dl>
-                            <p>{data.good.chiba.p[result_good_array]}</p>
+                            <p>
+                                {select === "chiba"
+                                    ? data.good.chiba.p[good_array()]
+                                    : select === "oosaka"
+                                    ? data.good.oosaka.p[good_array()]
+                                    : select === "tokyo"
+                                    ? data.good.tokyo.p[good_array()]
+                                    : select === "seiryo" && gender === "male"
+                                    ? data.good.seiryo.boys.p[good_array()]
+                                    : select === "seiryo" && gender === "woman"
+                                    ? data.good.seiryo.ladies.p[good_array()]
+                                    : console.log("err")}
+                            </p>
                         </section>
                     </section>
                     <section>
@@ -217,13 +344,27 @@ function Result() {
                         </dl>
                         <ul className="slider_btn_flex">
                             <li>
-                                <button className="btn-reset" onClick={()=> setSlider((slider-1+6)%6)}>
-                                <img src={slider_btn_left} alt="leftボタン" />
+                                <button
+                                    className="btn-reset"
+                                    onClick={() =>
+                                        setSlider((slider - 1 + 6) % 6)
+                                    }
+                                >
+                                    <img
+                                        src={slider_btn_left}
+                                        alt="leftボタン"
+                                    />
                                 </button>
                             </li>
                             <li>
-                            <button className="btn-reset" onClick={()=> setSlider((slider+1)%6)}>
-                                <img src={slider_btn_right} alt="rightボタン" />
+                                <button
+                                    className="btn-reset"
+                                    onClick={() => setSlider((slider + 1) % 6)}
+                                >
+                                    <img
+                                        src={slider_btn_right}
+                                        alt="rightボタン"
+                                    />
                                 </button>
                             </li>
                         </ul>
@@ -238,12 +379,60 @@ function Result() {
                         </h5>
                         <p className="slider-p">{data.slider.p[slider]}</p>
                         <div className="slider-active-flex">
-                        <button onClick={() => setSlider(0)}><p className={slider===0?"slider-active-primary":"slider-active-normal"}></p></button>
-                        <button onClick={() => setSlider(1)}><p className={slider===1?"slider-active-primary":"slider-active-normal"}></p></button>
-                        <button onClick={() => setSlider(2)}><p className={slider===2?"slider-active-primary":"slider-active-normal"}></p></button>
-                        <button onClick={() => setSlider(3)}><p className={slider===3?"slider-active-primary":"slider-active-normal"}></p></button>
-                        <button onClick={() => setSlider(4)}><p className={slider===4?"slider-active-primary":"slider-active-normal"}></p></button>
-                        <button onClick={() => setSlider(5)}><p className={slider===5?"slider-active-primary":"slider-active-normal"}></p></button>
+                            <button onClick={() => setSlider(0)}>
+                                <p
+                                    className={
+                                        slider === 0
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                            <button onClick={() => setSlider(1)}>
+                                <p
+                                    className={
+                                        slider === 1
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                            <button onClick={() => setSlider(2)}>
+                                <p
+                                    className={
+                                        slider === 2
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                            <button onClick={() => setSlider(3)}>
+                                <p
+                                    className={
+                                        slider === 3
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                            <button onClick={() => setSlider(4)}>
+                                <p
+                                    className={
+                                        slider === 4
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                            <button onClick={() => setSlider(5)}>
+                                <p
+                                    className={
+                                        slider === 5
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
                         </div>
                     </section>
                 </article>
