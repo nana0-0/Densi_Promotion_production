@@ -12,6 +12,7 @@ import about_img from "./assets/img/about_img.png";
 import about_solid from "./assets/img/about_solid_bg.png";
 import about_soltilo from "./assets/img/about_soltio_bg.svg";
 import pro_section_arrow from "./assets/img/pro_section_arrow.png";
+import pro_img from "./assets/img/vision_img.png";
 
 export function Header() {
     return (
@@ -34,38 +35,42 @@ export function Topmain() {
         <article>
             <section className="about_section_css">
                 <div>
-                    <img src={about_soltilo} alt="" className="soltilo_svg"/>
+                    <img src={about_soltilo} alt="" className="soltilo_svg" />
                     <img src={about_solid} alt="" className="about_solid" />
                     <figure className="about_img">
                         <img src={about_img} alt="" />
                     </figure>
                     <div className="about_wrapper">
-                    <h3>
-                        <em>ABOUT US</em>WHASについて
-                    </h3>
-                    <p className="pro_p_1">
-                        世界一強い育成アカデミーになり、
-                        <br />
-                        日本のサッカーの未来を創造していく中で、
-                        <br />
-                        圧倒的な努力を続け、
-                        <br />
-                        選手・指導者とともに成長し、
-                        <br />
-                        『世界』に羽ばたき、
-                        <br />
-                        世界で認められる『エース』のような存在を
-                        <br />
-                        創出していくことが
-                        <br />
-                        WAHS（ワズ）の使命です。
-                    </p>
+                        <h3>
+                            <em>ABOUT US</em>WHASについて
+                        </h3>
+                        <p className="pro_p_1">
+                            世界一強い育成アカデミーになり、
+                            <br />
+                            日本のサッカーの未来を創造していく中で、
+                            <br />
+                            圧倒的な努力を続け、
+                            <br />
+                            選手・指導者とともに成長し、
+                            <br />
+                            『世界』に羽ばたき、
+                            <br />
+                            世界で認められる『エース』のような存在を
+                            <br />
+                            創出していくことが
+                            <br />
+                            WAHS（ワズ）の使命です。
+                        </p>
                     </div>
                 </div>
             </section>
-            <section className="pro_section">
+            
+                <figure className="pro_img">
+                    <img src={pro_img} alt="" />
+                </figure>
+                <section>
                 <h3>
-                    プロになるためには
+                    <em>VISION</em>プロになるためには
                 </h3>
                 <p className="pro_p1">
                     プロになるために何をすればいいのか。
@@ -78,14 +83,23 @@ export function Topmain() {
                     <br />
                     日々の練習に対する正しい「意識」の持ち方が大切。
                     <br />
-                    </p>
-                    <p className="pro_p2">だからこそ</p>
-                    <p className="pro_p3">
-                    自分を知り「<em className="dot">意識</em>」を変えていきましょう
                 </p>
-                <img src={pro_section_arrow} alt="" className="pro_section_arrow"/>
-                <p className="pro_p4">WAHSの自己診断機能では</p>
-                <p className="pro_p5"><em>３つ</em>の診断結果を用意しています</p>
+                <p className="pro_p2">だからこそ</p>
+                <p className="pro_p3">
+                    自分を知り「<em className="dot">意識</em>
+                    」を変えていきましょう
+                </p>
+                <section className="pro_section">
+                    <img
+                        src={pro_section_arrow}
+                        alt=""
+                        className="pro_section_arrow"
+                    />
+                    <p className="pro_p4">WAHSの自己診断機能では</p>
+                    <p className="pro_p5">
+                        <em>３つ</em>の診断結果を用意しています
+                    </p>
+                </section>
             </section>
             <ol>
                 <li className="ol-flex">

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="326.734" height="240.165" viewBox="0 0 326.734 240.165">
   <g id="about_soltio_bg" transform="translate(2.302 -811.358)">
     <text id="SOLTILO_FC" data-name="SOLTILO FC" transform="translate(172.661 969.403) rotate(-25)" fill="#fff" font-size="60" font-family="Roboto-Bold, Roboto" font-weight="700" opacity="0.22"><tspan x="-159.258" y="0">SOLTILO FC</tspan></text>
-    <text id="SOLTILO_FC-2" data-name="SOLTILO FC" transform="translate(170.661 937.403) rotate(-25)" fill="none" stroke="#00aeef" stroke-width="1" font-size="60" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-159.258" y="0">SOLTILO FC</tspan></text>
+    <text id="SOLTILO_FC-2" data-name="SOLTILO FC" transform="translate(170.661 937.403) rotate(-25)" fill="none" stroke="#FFF" stroke-width="1" font-size="60" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-159.258" y="0">SOLTILO FC</tspan></text>
   </g>
 </svg>

@@ -126,7 +126,7 @@ h3 em::after {
 
 section {
     width: 85%;
-    margin: 70px auto;
+    margin: 0px auto;
 }
 
 ol {
@@ -179,7 +179,7 @@ ol li:nth-child(4) {
     content: "";
     background: url(../img/ol-img-before1.svg);
     background-size: 100%;
-    height: 166px;
+    height: 165px;
     width: 180px;
     position: absolute;
     top: -50px;
@@ -1290,10 +1290,15 @@ article{
 }
 
 .pro_section{
+    width: 100%;
     text-align: center;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 30px;
 }
 
 .pro_p1{
+    margin-top: 15px;
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 2.1;
@@ -1374,4 +1379,14 @@ article{
     margin-top: 40px;
     width: 10px;
     margin-bottom: 60px;
+}
+
+.pro_img {
+    text-align: end;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.pro_img img {
+    width: 80%;
 }
