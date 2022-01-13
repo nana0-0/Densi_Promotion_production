@@ -2,7 +2,11 @@ import React from "react";
 import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
-import result_now_img from "./assets/img/result-now-img.png";
+import result_now_img0 from "./assets/img/result-now-img.png";
+import result_now_img1 from "./assets/img/result_now_abe.png"; 
+import result_now_img2 from "./assets/img/result_now_fujii.png";
+import result_now_img3 from "./assets/img/result_now_kuramoti.png";
+import result_now_img4 from "./assets/img/result_now_matumoto.png";
 import result_weak_img0 from "./assets/img/result_weak_img0.png";
 import result_weak_img1 from "./assets/img/result_weak_img1.png";
 import result_weak_img2 from "./assets/img/result_weak_img2.png";
@@ -81,19 +85,6 @@ function Result() {
 
     let result_good_img = result_good_chiba_kantoku;
     let result_good_array = 0;
-    // if (potision === "gk") {
-    //     result_good_img = result_good_chiba_gk;
-    //     result_good_array = 1;
-    // } else if (confidence === true && (counter < 8 || height > 165)) {
-    //     result_good_img = result_good_chiba_pysical;
-    //     result_good_array = 2;
-    // } else if (confidence === false && (counter < 8 || height > 165)) {
-    //     result_good_img = result_good_chiba_kantoku;
-    //     result_good_array = 0;
-    // } else {
-    //     result_good_img = result_good_chiba_athletic;
-    //     result_good_array = 3;
-    // }
 
     function good_img() {
         if (select === "chiba") {
@@ -129,8 +120,6 @@ function Result() {
         }
         return result_good_img;
     }
-
-    let good_text = "data.good.chiba.staff[good_array()]";
 
     function good_array() {
         if (select === "chiba") {
@@ -188,6 +177,31 @@ function Result() {
     } else {
         gender_text = "OB";
     }
+
+    let now_array = 0;
+    let result_now_img;
+
+    if (gender === "woman") {
+        result_now_img = result_now_img0;
+    } else if (potision === "mf") {
+        if (confidence === true) {
+            result_now_img = result_now_img2;
+            now_array = 2;
+        } else {
+            result_now_img = result_now_img3;
+            now_array = 3;
+        }
+    }else if (potision === "df") {
+        result_now_img =result_now_img4;
+        now_array = 4;
+    }else if (potision === "fw"){
+        result_now_img =result_now_img2;
+        now_array = 2;
+    }else{
+        result_now_img =result_now_img2;
+        now_array = 2;
+    }
+
     const [slider, setSlider] = useState(0);
     return (
         <>
@@ -206,13 +220,15 @@ function Result() {
                                 を<em>紹介します</em>
                             </dd>
                         </dl>
-                        <h5 className="result-sbtitle">{data.seiryo.og[0]}</h5>
+                        <h5 className="result-sbtitle">
+                            {data.now.og[now_array]}
+                        </h5>
                         <ul className="result-now-flex">
                             <li className="result-now-point1">
-                                {data.seiryo.point1[0]}
+                                {data.now.point1[now_array]}
                             </li>
                             <li className="result-now-point2">
-                                {data.seiryo.point2[0]}
+                                {data.now.point2[now_array]}
                             </li>
                         </ul>
                         <figure className="result-now-img">
@@ -220,12 +236,12 @@ function Result() {
                         </figure>
                         <section className="result-now">
                             <dl>
-                                <dt>{data.seiryo.dt[0]}</dt>
+                                <dt>{data.now.dt[0]}</dt>
                                 <dd className="result-team">
-                                    {data.seiryo.dd[0]}
+                                    {data.now.dd[now_array]}
                                 </dd>
                             </dl>
-                            <p>{data.seiryo.p[0]}</p>
+                            <p>{data.now.p[now_array]}</p>
                         </section>
                     </section>
                     <section>

@@ -1005,12 +1005,12 @@ h6 {
 .result-now-point2::after {
     content: "";
     background: url("../img/now-point-after.png");
-    width: 70px;
-    height: 109px;
+    width: 110px;
+    height: 51px;
     background-size: 100%;
     position: absolute;
     top: 90px;
-    right: 40px;
+    right: 50%;
     z-index: 5;
 }
 

@@ -87,7 +87,7 @@ export function Topmain() {
                 <p className="pro_p2">だからこそ</p>
                 <p className="pro_p3">
                     自分を知り「<em className="dot">意識</em>
-                    」を変えていきましょう
+                    」を変えていこう
                 </p>
                 <section className="pro_section">
                     <img
