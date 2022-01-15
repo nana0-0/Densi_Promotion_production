@@ -40,7 +40,7 @@ function Question5() {
                         <h5>身長は何cｍですか？</h5>
                     </dd>
                 </dl>
-                <form className="height-form">
+                <div className="height-form">
                     <input
                         type="number"
                         className="input_height"
@@ -49,7 +49,7 @@ function Question5() {
                             setHeight(e.target.value);
                         }}
                     />
-                </form>
+                </div>
                 <figure className="height-img-flex">
                     <img
                         src={height_img}

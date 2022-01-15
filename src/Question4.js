@@ -22,7 +22,7 @@ function Question4() {
                         <h5>50mのタイムは何秒ですか？</h5>
                     </dd>
                 </dl>
-                <form className="time-form">
+                <div className="time-form">
                     <input
                         type="number"
                         className="input_time"
@@ -31,7 +31,7 @@ function Question4() {
                             setCounter(e.target.value);
                         }}
                     />
-                </form>
+                </div>
                 <figure className="time-render-img">
                     <img src={time_render_img} alt="タイムメータ" />
                 </figure>

@@ -3,7 +3,6 @@ import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
 import result_now_img0 from "./assets/img/result-now-img.png";
-import result_now_img1 from "./assets/img/result_now_abe.png"; 
 import result_now_img2 from "./assets/img/result_now_fujii.png";
 import result_now_img3 from "./assets/img/result_now_kuramoti.png";
 import result_now_img4 from "./assets/img/result_now_matumoto.png";
@@ -19,7 +18,7 @@ import result_good_seiryo_head_l from "./assets/img/result_seiryo_head_l.png";
 import result_good_seiryo_head from "./assets/img/result_seiryo_head.png";
 import result_good_tokyo_head from "./assets/img/result_tokyo_head.png";
 import result_good_tokyo_athletic from "./assets/img/result_tokyo_athletic.png";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
 import slider_btn_right from "./assets/img/result_slider_right.png";
@@ -29,8 +28,21 @@ import slider_img2 from "./assets/img/result_slider_img2.png";
 import slider_img3 from "./assets/img/result_slider_img3.png";
 import slider_img4 from "./assets/img/result_slider_img4.png";
 import slider_img5 from "./assets/img/result_slider_img5.png";
+import check_tracking_img from "./assets/img/check_tracking_img.png";
+import check_dormitory_img from "./assets/img/check_dormitory_img.png";
+import check_expedition_img from "./assets/img/check_expedition_img.png";
+import check_gkcoach_img from "./assets/img/check_gkcoach_img.png";
+import check_institution_img from "./assets/img/check_institution_img.png";
+import check_lawn_img from "./assets/img/check_lawn_img.png";
+import check_physicalcoach_img from "./assets/img/check_physicalcoach_img.png";
+import check_trainer_img from "./assets/img/check_trainer_img.png";
+import check_foreigner_img from "./assets/img/check_foreigner_img.png";
+import check_sponser_img from "./assets/img/check_sponser_img.png";
+import check_personalgym_img from "./assets/img/check_personalgym_img.png";
 
 import { useState } from "react";
+import { gsap } from "gsap";
+import { Fade } from "react-awesome-reveal";
 
 function Result() {
     const { context, setContext } = useContext(GlobalContext);
@@ -39,6 +51,33 @@ function Result() {
         if (pagetop === true) {
             window.scrollTo(0, 2200);
             setContext({ ...context, pagetop: false });
+        }
+    });
+
+    const fead_img = useRef();
+    const fead_text = useRef();
+    const fead_check = useRef();
+    gsap.from(fead_img.current, { x: 0 });
+    gsap.from(fead_text.current, { x: 0 });
+    gsap.from(fead_check.current, { x: 0 });
+
+    const [btn_toggle, setBtn_toggle] = useState("right");
+    const [check_btn_toggle, setCheckbtn_toggle] = useState("right");
+
+    useEffect(() => {
+        if (check_btn_toggle === "right") {
+            gsap.from(fead_check.current, { x: -350 });
+        } else if (check_btn_toggle === "left") {
+            gsap.from(fead_check.current, { x: 150 });
+        }
+    });
+    useEffect(() => {
+        if (btn_toggle === "right") {
+            gsap.from(fead_img.current, { x: -350 });
+            gsap.from(fead_text.current, { x: -350 });
+        } else if (btn_toggle === "left") {
+            gsap.from(fead_img.current, { x: 150 });
+            gsap.from(fead_text.current, { x: 150 });
         }
     });
 
@@ -191,18 +230,99 @@ function Result() {
             result_now_img = result_now_img3;
             now_array = 3;
         }
-    }else if (potision === "df") {
-        result_now_img =result_now_img4;
+    } else if (potision === "df") {
+        result_now_img = result_now_img4;
         now_array = 4;
-    }else if (potision === "fw"){
-        result_now_img =result_now_img2;
+    } else if (potision === "fw") {
+        result_now_img = result_now_img2;
         now_array = 2;
-    }else{
-        result_now_img =result_now_img2;
+    } else {
+        result_now_img = result_now_img2;
         now_array = 2;
     }
-
     const [slider, setSlider] = useState(0);
+    const [check_slider, setCheckslider] = useState(0);
+
+    let check_slider_p = [];
+    let check_slider_dt = [];
+    let check_slider_dd = [];
+    let check_img = [];
+    if (tracking === true) {
+        check_slider_p.push(data.check.tracking.point);
+        check_slider_dt.push(data.check.tracking.title);
+        check_slider_dd.push(data.check.tracking.p);
+        check_img.push(check_tracking_img);
+    }
+    console.log(check_img);
+    if (gkcoach === true) {
+        check_slider_p.push(data.check.gkcoach.point);
+        check_slider_dt.push(data.check.gkcoach.title);
+        check_slider_dd.push(data.check.gkcoach.p);
+        check_img.push(check_gkcoach_img);
+    }
+    if (lawn === true) {
+        check_slider_p.push(data.check.lawn.point);
+        check_slider_dt.push(data.check.lawn.title);
+        check_slider_dd.push(data.check.lawn.p);
+        check_img.push(check_lawn_img);
+    }
+    if (dormitory === true) {
+        check_slider_p.push(data.check.dormitory.point);
+        check_slider_dt.push(data.check.dormitory.title);
+        check_slider_dd.push(data.check.dormitory.p);
+        check_img.push(check_dormitory_img);
+    }
+    if (expedition === true) {
+        check_slider_p.push(data.check.expedition.point);
+        check_slider_dt.push(data.check.expedition.title);
+        check_slider_dd.push(data.check.expedition.p);
+        check_img.push(check_expedition_img);
+    }
+    if (trainer === true) {
+        check_slider_p.push(data.check.trainer.point);
+        check_slider_dt.push(data.check.trainer.title);
+        check_slider_dd.push(data.check.trainer.p);
+        check_img.push(check_trainer_img);
+    }
+    if (knows === true) {
+        check_slider_p.push(data.check.knows.point);
+        check_slider_dt.push(data.check.knows.title);
+        check_slider_dd.push(data.check.knows.p);
+        check_img.push(check_tracking_img);
+    }
+    if (institution === true) {
+        check_slider_p.push(data.check.institution.point);
+        check_slider_dt.push(data.check.institution.title);
+        check_slider_dd.push(data.check.institution.p);
+        check_img.push(check_institution_img);
+    }
+    if (physicalcoach === true) {
+        check_slider_p.push(data.check.physicalcoach.point);
+        check_slider_dt.push(data.check.physicalcoach.title);
+        check_slider_dd.push(data.check.physicalcoach.p);
+        check_img.push(check_physicalcoach_img);
+    }
+    if (foreigner === true) {
+        check_slider_p.push(data.check.foreigner.point);
+        check_slider_dt.push(data.check.foreigner.title);
+        check_slider_dd.push(data.check.foreigner.p);
+        check_img.push(check_foreigner_img);
+    }
+    if (sponser === true) {
+        check_slider_p.push(data.check.sponser.point);
+        check_slider_dt.push(data.check.sponser.title);
+        check_slider_dd.push(data.check.sponser.p);
+        check_img.push(check_sponser_img);
+    }
+    if (personalgym === true) {
+        check_slider_p.push(data.check.personalgym.point);
+        check_slider_dt.push(data.check.personalgym.title);
+        check_slider_dd.push(data.check.personalgym.p);
+        check_img.push(check_personalgym_img);
+    }
+
+    console.log(check_slider_p);
+
     return (
         <>
             <>
@@ -220,29 +340,33 @@ function Result() {
                                 を<em>紹介します</em>
                             </dd>
                         </dl>
-                        <h5 className="result-sbtitle">
-                            {data.now.og[now_array]}
-                        </h5>
-                        <ul className="result-now-flex">
-                            <li className="result-now-point1">
-                                {data.now.point1[now_array]}
-                            </li>
-                            <li className="result-now-point2">
-                                {data.now.point2[now_array]}
-                            </li>
-                        </ul>
-                        <figure className="result-now-img">
-                            <img src={result_now_img} alt="" />
-                        </figure>
-                        <section className="result-now">
-                            <dl>
-                                <dt>{data.now.dt[0]}</dt>
-                                <dd className="result-team">
-                                    {data.now.dd[now_array]}
-                                </dd>
-                            </dl>
-                            <p>{data.now.p[now_array]}</p>
-                        </section>
+                        <Fade direction="up" duration="800">
+                            <h5 className="result-sbtitle">
+                                {data.now.og[now_array]}
+                            </h5>
+                            <section>
+                                <ul className="result-now-flex">
+                                    <li className="result-now-point1">
+                                        {data.now.point1[now_array]}
+                                    </li>
+                                    <li className="result-now-point2">
+                                        {data.now.point2[now_array]}
+                                    </li>
+                                </ul>
+                                <figure className="result-now-img">
+                                    <img src={result_now_img} alt="" />
+                                </figure>
+                            </section>
+                            <section className="result-now">
+                                <dl>
+                                    <dt>{data.now.dt[0]}</dt>
+                                    <dd className="result-team">
+                                        {data.now.dd[now_array]}
+                                    </dd>
+                                </dl>
+                                <p>{data.now.p[now_array]}</p>
+                            </section>
+                        </Fade>
                     </section>
                     <section>
                         <dl className="result-title">
@@ -252,26 +376,30 @@ function Result() {
                                 <em>トレーニング</em>
                             </dd>
                         </dl>
-                        <h5 className="result-sbtitle">
-                            {data.weak.training[weak_array_number]}
-                        </h5>
-                        <ul>
-                            <li className="result-nigate-point1">
-                                {data.weak.point[weak_array_number]}
-                            </li>
-                        </ul>
-                        <figure className="result-nigate-img">
-                            <img src={weak_img} alt="" />
-                        </figure>
-                        <section className="result-now">
-                            <dl>
-                                <dt>{data.weak.dt[0]}</dt>
-                                <dd className="result-team">
-                                    {data.weak.dd[0]}
-                                </dd>
-                            </dl>
-                            <p>{data.weak.p[weak_array_number]}</p>
-                        </section>
+                        <Fade direction="up" duration="800">
+                            <h5 className="result-sbtitle">
+                                {data.weak.training[weak_array_number]}
+                            </h5>
+                            <section>
+                                <ul>
+                                    <li className="result-nigate-point1">
+                                        {data.weak.point[weak_array_number]}
+                                    </li>
+                                </ul>
+                                <figure className="result-nigate-img">
+                                    <img src={weak_img} alt="" />
+                                </figure>
+                            </section>
+                            <section className="result-now">
+                                <dl>
+                                    <dt>{data.weak.dt[0]}</dt>
+                                    <dd className="result-team">
+                                        {data.weak.dd[0]}
+                                    </dd>
+                                </dl>
+                                <p>{data.weak.p[weak_array_number]}</p>
+                            </section>
+                        </Fade>
                     </section>
                     <section>
                         <dl className="result-title">
@@ -281,90 +409,117 @@ function Result() {
                                 <em>スタッフ紹介</em>
                             </dd>
                         </dl>
-                        <h5 className="result-sbtitle">
-                            {select === "chiba"
-                                ? data.good.chiba.staff[good_array()]
-                                : select === "oosaka"
-                                ? data.good.oosaka.staff[good_array()]
-                                : select === "tokyo"
-                                ? data.good.tokyo.staff[good_array()]
-                                : select === "seiryo" && gender === "male"
-                                ? data.good.seiryo.boys.staff[good_array()]
-                                : select === "seiryo" && gender === "woman"
-                                ? data.good.seiryo.ladies.staff[good_array()]
-                                : console.log("goodエラー")}
-                        </h5>
-                        <ul>
-                            <li className="result-tokui-point1">
+                        <Fade direction="up" duration="800">
+                            <h5 className="result-sbtitle">
                                 {select === "chiba"
-                                    ? data.good.chiba.point[good_array()]
+                                    ? data.good.chiba.staff[good_array()]
                                     : select === "oosaka"
-                                    ? data.good.oosaka.point[good_array()]
+                                    ? data.good.oosaka.staff[good_array()]
                                     : select === "tokyo"
-                                    ? data.good.tokyo.point[good_array()]
+                                    ? data.good.tokyo.staff[good_array()]
                                     : select === "seiryo" && gender === "male"
-                                    ? data.good.seiryo.boys.point[good_array()]
+                                    ? data.good.seiryo.boys.staff[good_array()]
                                     : select === "seiryo" && gender === "woman"
-                                    ? data.good.seiryo.ladies.point[
+                                    ? data.good.seiryo.ladies.staff[
                                           good_array()
                                       ]
-                                    : console.log("err")}
-                            </li>
-                        </ul>
-                        <figure className="result_tokui_img">
-                            <img src={good_img()} alt="" />
-                        </figure>
-                        <section className="result-now">
-                            <dl>
-                                <dt>{data.good.chiba.dt[0]}</dt>
-                                <dd className="result-team">
+                                    : console.log("goodエラー")}
+                            </h5>
+                            <section>
+                                <ul>
+                                    <li className="result-tokui-point1">
+                                        {select === "chiba"
+                                            ? data.good.chiba.point[
+                                                  good_array()
+                                              ]
+                                            : select === "oosaka"
+                                            ? data.good.oosaka.point[
+                                                  good_array()
+                                              ]
+                                            : select === "tokyo"
+                                            ? data.good.tokyo.point[
+                                                  good_array()
+                                              ]
+                                            : select === "seiryo" &&
+                                              gender === "male"
+                                            ? data.good.seiryo.boys.point[
+                                                  good_array()
+                                              ]
+                                            : select === "seiryo" &&
+                                              gender === "woman"
+                                            ? data.good.seiryo.ladies.point[
+                                                  good_array()
+                                              ]
+                                            : console.log("err")}
+                                    </li>
+                                </ul>
+                                <figure className="result_tokui_img">
+                                    <img src={good_img()} alt="" />
+                                </figure>
+                            </section>
+                            <section className="result-now">
+                                <dl>
+                                    <dt>{data.good.chiba.dt[0]}</dt>
+                                    <dd className="result-team">
+                                        {select === "chiba"
+                                            ? data.good.chiba.dd[good_array()]
+                                            : select === "oosaka"
+                                            ? data.good.oosaka.dd[good_array()]
+                                            : select === "tokyo"
+                                            ? data.good.tokyo.dd[good_array()]
+                                            : select === "seiryo" &&
+                                              gender === "male"
+                                            ? data.good.seiryo.boys.dd[
+                                                  good_array()
+                                              ]
+                                            : select === "seiryo" &&
+                                              gender === "woman"
+                                            ? data.good.seiryo.ladies.dd[
+                                                  good_array()
+                                              ]
+                                            : console.log("err")}
+                                    </dd>
+                                </dl>
+                                <p>
                                     {select === "chiba"
-                                        ? data.good.chiba.dd[good_array()]
+                                        ? data.good.chiba.p[good_array()]
                                         : select === "oosaka"
-                                        ? data.good.oosaka.dd[good_array()]
+                                        ? data.good.oosaka.p[good_array()]
                                         : select === "tokyo"
-                                        ? data.good.tokyo.dd[good_array()]
+                                        ? data.good.tokyo.p[good_array()]
                                         : select === "seiryo" &&
                                           gender === "male"
-                                        ? data.good.seiryo.boys.dd[good_array()]
+                                        ? data.good.seiryo.boys.p[good_array()]
                                         : select === "seiryo" &&
                                           gender === "woman"
-                                        ? data.good.seiryo.ladies.dd[
+                                        ? data.good.seiryo.ladies.p[
                                               good_array()
                                           ]
                                         : console.log("err")}
-                                </dd>
-                            </dl>
-                            <p>
-                                {select === "chiba"
-                                    ? data.good.chiba.p[good_array()]
-                                    : select === "oosaka"
-                                    ? data.good.oosaka.p[good_array()]
-                                    : select === "tokyo"
-                                    ? data.good.tokyo.p[good_array()]
-                                    : select === "seiryo" && gender === "male"
-                                    ? data.good.seiryo.boys.p[good_array()]
-                                    : select === "seiryo" && gender === "woman"
-                                    ? data.good.seiryo.ladies.p[good_array()]
-                                    : console.log("err")}
-                            </p>
-                        </section>
+                                </p>
+                            </section>
+                        </Fade>
                     </section>
-                    <section>
-                        <dl className="result-title">
-                            <dt>一緒に成長しよう</dt>
-                            <dd>
-                                <em className="result-dot">選手</em>を
-                                <em>紹介します</em>
-                            </dd>
-                        </dl>
-                        <ul className="slider_btn_flex">
+                </article>
+                <article
+                    className={
+                        check_slider_p.length === 0 ? "none" : "checkarticle"
+                    }
+                >
+                    <section className="check_wrap">
+                        <ul className="check_btn_flex">
                             <li>
                                 <button
                                     className="btn-reset"
-                                    onClick={() =>
-                                        setSlider((slider - 1 + 6) % 6)
-                                    }
+                                    onClick={() => {
+                                        setCheckslider(
+                                            (check_slider -
+                                                1 +
+                                                check_slider_p.length) %
+                                                check_slider_p.length
+                                        );
+                                        setCheckbtn_toggle("left");
+                                    }}
                                 >
                                     <img
                                         src={slider_btn_left}
@@ -375,7 +530,13 @@ function Result() {
                             <li>
                                 <button
                                     className="btn-reset"
-                                    onClick={() => setSlider((slider + 1) % 6)}
+                                    onClick={() => {
+                                        setCheckslider(
+                                            (check_slider + 1) %
+                                                check_slider_p.length
+                                        );
+                                        setCheckbtn_toggle("right");
+                                    }}
                                 >
                                     <img
                                         src={slider_btn_right}
@@ -384,74 +545,142 @@ function Result() {
                                 </button>
                             </li>
                         </ul>
-                        <div className="slider-img-flex">
-                            <figure className="result_slider_img">
-                                <img src={img_slider[slider]} alt="" />
+                        <section className="check_section" ref={fead_check}>
+                            <figure>
+                                <img
+                                    src={check_img[check_slider]}
+                                    alt="tracking"
+                                />
                             </figure>
-                            <p>SOLTILO CHIBA FC</p>
-                        </div>
-                        <h5 className="result-sbtitle">
-                            {data.slider.player[slider]}
-                        </h5>
-                        <p className="slider-p">{data.slider.p[slider]}</p>
-                        <div className="slider-active-flex">
-                            <button onClick={() => setSlider(0)}>
-                                <p
-                                    className={
-                                        slider === 0
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                            <button onClick={() => setSlider(1)}>
-                                <p
-                                    className={
-                                        slider === 1
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                            <button onClick={() => setSlider(2)}>
-                                <p
-                                    className={
-                                        slider === 2
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                            <button onClick={() => setSlider(3)}>
-                                <p
-                                    className={
-                                        slider === 3
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                            <button onClick={() => setSlider(4)}>
-                                <p
-                                    className={
-                                        slider === 4
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                            <button onClick={() => setSlider(5)}>
-                                <p
-                                    className={
-                                        slider === 5
-                                            ? "slider-active-primary"
-                                            : "slider-active-normal"
-                                    }
-                                ></p>
-                            </button>
-                        </div>
+                            <p className="check_point">
+                                {check_slider_p[check_slider]}
+                            </p>
+                            <dl>
+                                <dt>{check_slider_dt[check_slider]}</dt>
+                                <dd>{check_slider_dd[check_slider]}</dd>
+                            </dl>
+                        </section>
                     </section>
+                    <div className="check_slider_active_flex">
+                        {check_slider_p.map((key, i) => (
+                            <button
+                                onClick={() => setCheckslider(i)}
+                                className="btn-reset check_slider_padding"
+                            >
+                                <p
+                                    className={
+                                        i === check_slider
+                                            ? "check_slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                        ))}
+                    </div>
                 </article>
+                <section>
+                    <dl className="result-title">
+                        <dt>一緒に成長しよう</dt>
+                        <dd>
+                            <em className="result-dot">選手</em>を
+                            <em>紹介します</em>
+                        </dd>
+                    </dl>
+                    <ul className="slider_btn_flex">
+                        <li>
+                            <button
+                                className="btn-reset"
+                                onClick={() => {
+                                    setSlider((slider - 1 + 6) % 6);
+                                    setBtn_toggle("left");
+                                }}
+                            >
+                                <img src={slider_btn_left} alt="leftボタン" />
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className="btn-reset"
+                                onClick={() => {
+                                    setSlider((slider + 1) % 6);
+                                    setBtn_toggle("right");
+                                }}
+                            >
+                                <img src={slider_btn_right} alt="rightボタン" />
+                            </button>
+                        </li>
+                    </ul>
+                    <div className="slider-img-flex" ref={fead_img}>
+                        <figure className="result_slider_img">
+                            <img src={img_slider[slider]} alt="" />
+                        </figure>
+                        <p>SOLTILO CHIBA FC</p>
+                    </div>
+                    <Fade direction="up" duration="800">
+                        <div ref={fead_text}>
+                            <h5 className="result-sbtitle">
+                                {data.slider.player[slider]}
+                            </h5>
+                            <p className="slider-p">{data.slider.p[slider]}</p>
+                        </div>
+                    </Fade>
+                    <div className="slider-active-flex">
+                        <button onClick={() => setSlider(0)}>
+                            <p
+                                className={
+                                    slider === 0
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                        <button onClick={() => setSlider(1)}>
+                            <p
+                                className={
+                                    slider === 1
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                        <button onClick={() => setSlider(2)}>
+                            <p
+                                className={
+                                    slider === 2
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                        <button onClick={() => setSlider(3)}>
+                            <p
+                                className={
+                                    slider === 3
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                        <button onClick={() => setSlider(4)}>
+                            <p
+                                className={
+                                    slider === 4
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                        <button onClick={() => setSlider(5)}>
+                            <p
+                                className={
+                                    slider === 5
+                                        ? "slider-active-primary"
+                                        : "slider-active-normal"
+                                }
+                            ></p>
+                        </button>
+                    </div>
+                </section>
                 <Footer />
             </>
         </>

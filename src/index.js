@@ -16,6 +16,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext } from "react";
 import { useState } from "react";
+import { gsap } from "gsap";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
+import MotionPathPlugin from "gsap/MotionPathPlugin";
+gsap.registerPlugin(CSSRulePlugin,MotionPathPlugin);
 
 export const GlobalContext = createContext(null);
 

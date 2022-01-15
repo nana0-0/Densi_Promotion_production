@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import japan_img from "./assets/img/question1_japanimg.svg";
 import oosaka_img from "./assets/img/question1_oosaka.png";
 import tokyo_img from "./assets/img/question1_tokyo.png";
@@ -9,6 +9,8 @@ import seiryo_img from "./assets/img/question1_seiryo.png";
 import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
 import { useContext } from "react";
 import { GlobalContext } from "./index.js";
+import { gsap } from "gsap";
+// import CSSRulePlugin from "gsap/CSSRulePlugin";
 
 function Question1() {
     const { context, setContext } = useContext(GlobalContext);
@@ -27,6 +29,12 @@ function Question1() {
 
     let sheets = document.styleSheets;
     let sheet = sheets[sheets.length - 1];
+
+    // const fead_img = useRef();
+    // useEffect(() => {
+    //     let rotet = CSSRulePlugin.getRule(".question-img-circle::before");
+    //     gsap.to(rotet, { rotation: 360 });
+    // });
 
     switch (select) {
         case "oosaka":
@@ -150,9 +158,9 @@ function Question1() {
                     <figure className="question1-japan-img">
                         <img src={japan_img} alt="日本地図" />
                     </figure>
-                    <figure className="question-img-circle">
-                        <img src={selected_img} alt="大阪の画像" />
-                    </figure>
+                        <figure className="question-img-circle">
+                            <img src={selected_img} alt="大阪の画像" />
+                        </figure>
                     <div className="select-btn-flex">
                         <button
                             onClick={() =>
@@ -195,14 +203,30 @@ function Question1() {
                     決定
                 </Link>
                 <div className="questions-active-flex">
-                <Link to="/question1"><p className="active-primary"></p></Link>
-                <Link to="/question2"><p  className="active-normal"></p></Link>
-                <Link to="/question3"><p  className="active-normal"></p></Link>
-                <Link to="/question4"><p  className="active-normal"></p></Link>
-                <Link to="/question5"><p  className="active-normal"></p></Link>
-                <Link to="/question6"><p  className="active-normal"></p></Link>
-                <Link to="/question7"><p  className="active-normal"></p></Link>
-                <Link to="/question8"><p  className="active-normal"></p></Link>
+                    <Link to="/question1">
+                        <p className="active-primary"></p>
+                    </Link>
+                    <Link to="/question2">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question3">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question4">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question5">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question6">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question7">
+                        <p className="active-normal"></p>
+                    </Link>
+                    <Link to="/question8">
+                        <p className="active-normal"></p>
+                    </Link>
                 </div>
             </div>
         </>
