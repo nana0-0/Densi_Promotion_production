@@ -39,6 +39,8 @@ import check_trainer_img from "./assets/img/check_trainer_img.png";
 import check_foreigner_img from "./assets/img/check_foreigner_img.png";
 import check_sponser_img from "./assets/img/check_sponser_img.png";
 import check_personalgym_img from "./assets/img/check_personalgym_img.png";
+import check_left_btn from "./assets/img/check_left_btn.png"; 
+import check_right_btn from "./assets/img/check_right_btn.png"; 
 
 import { useState } from "react";
 import { gsap } from "gsap";
@@ -54,30 +56,30 @@ function Result() {
         }
     });
 
-    const fead_img = useRef();
-    const fead_text = useRef();
-    const fead_check = useRef();
-    gsap.from(fead_img.current, { x: 0 });
-    gsap.from(fead_text.current, { x: 0 });
-    gsap.from(fead_check.current, { x: 0 });
+   
+    gsap.from(".fead_img", { x: 0 });
+    gsap.from(".fead_text", { x: 0 });
+    gsap.from(".check_section", { x: 0 });
 
-    const [btn_toggle, setBtn_toggle] = useState("right");
-    const [check_btn_toggle, setCheckbtn_toggle] = useState("right");
+    const [btn_toggle, setBtn_toggle] = useState("");
+    const [check_btn_toggle, setCheckbtn_toggle] = useState("");
 
     useEffect(() => {
-        if (check_btn_toggle === "right") {
-            gsap.from(fead_check.current, { x: -350 });
-        } else if (check_btn_toggle === "left") {
-            gsap.from(fead_check.current, { x: 150 });
+        console.log(check_btn_toggle)
+        console.log(btn_toggle)
+        if (check_btn_toggle === "check_right") {
+            gsap.from(".check_section", { x: -350 });
         }
-    });
-    useEffect(() => {
+        if (check_btn_toggle === "check_left") {
+            gsap.from(".check_section", { x: 150 });
+        }
         if (btn_toggle === "right") {
-            gsap.from(fead_img.current, { x: -350 });
-            gsap.from(fead_text.current, { x: -350 });
-        } else if (btn_toggle === "left") {
-            gsap.from(fead_img.current, { x: 150 });
-            gsap.from(fead_text.current, { x: 150 });
+            gsap.from(".fead_img", { x: -350 });
+            gsap.from(".fead_text", { x: -350 });
+        }
+        if (btn_toggle === "left") {
+            gsap.from(".fead_img", { x: 150 });
+            gsap.from(".fead_text", { x: 150 });
         }
     });
 
@@ -332,19 +334,19 @@ function Result() {
                     <h4 className="result_h4">診断結果</h4>
                     <section>
                         <dl className="result-title">
-                            <dt>あなたの能力に近い</dt>
+                            <dt>自分を知ろう</dt>
                             <dd>
+                                <em>能力</em>が<em>近い</em>
                                 <em className="result-dot space">
                                     {gender_text}選手
                                 </em>
-                                を<em>紹介します</em>
                             </dd>
                         </dl>
                         <Fade direction="up" duration="800">
-                            <h5 className="result-sbtitle">
-                                {data.now.og[now_array]}
-                            </h5>
                             <section>
+                                <h5 className="result-sbtitle">
+                                    {data.now.og[now_array]}
+                                </h5>
                                 <ul className="result-now-flex">
                                     <li className="result-now-point1">
                                         {data.now.point1[now_array]}
@@ -377,10 +379,10 @@ function Result() {
                             </dd>
                         </dl>
                         <Fade direction="up" duration="800">
-                            <h5 className="result-sbtitle">
-                                {data.weak.training[weak_array_number]}
-                            </h5>
                             <section>
+                                <h5 className="result-sbtitle">
+                                    {data.weak.training[weak_array_number]}
+                                </h5>
                                 <ul>
                                     <li className="result-nigate-point1">
                                         {data.weak.point[weak_array_number]}
@@ -410,22 +412,26 @@ function Result() {
                             </dd>
                         </dl>
                         <Fade direction="up" duration="800">
-                            <h5 className="result-sbtitle">
-                                {select === "chiba"
-                                    ? data.good.chiba.staff[good_array()]
-                                    : select === "oosaka"
-                                    ? data.good.oosaka.staff[good_array()]
-                                    : select === "tokyo"
-                                    ? data.good.tokyo.staff[good_array()]
-                                    : select === "seiryo" && gender === "male"
-                                    ? data.good.seiryo.boys.staff[good_array()]
-                                    : select === "seiryo" && gender === "woman"
-                                    ? data.good.seiryo.ladies.staff[
-                                          good_array()
-                                      ]
-                                    : console.log("goodエラー")}
-                            </h5>
                             <section>
+                                <h5 className="result-sbtitle">
+                                    {select === "chiba"
+                                        ? data.good.chiba.staff[good_array()]
+                                        : select === "oosaka"
+                                        ? data.good.oosaka.staff[good_array()]
+                                        : select === "tokyo"
+                                        ? data.good.tokyo.staff[good_array()]
+                                        : select === "seiryo" &&
+                                          gender === "male"
+                                        ? data.good.seiryo.boys.staff[
+                                              good_array()
+                                          ]
+                                        : select === "seiryo" &&
+                                          gender === "woman"
+                                        ? data.good.seiryo.ladies.staff[
+                                              good_array()
+                                          ]
+                                        : console.log("goodエラー")}
+                                </h5>
                                 <ul>
                                     <li className="result-tokui-point1">
                                         {select === "chiba"
@@ -507,7 +513,14 @@ function Result() {
                     }
                 >
                     <section className="check_wrap">
-                        <ul className="check_btn_flex">
+                    <dl className="recommend-title">
+                        <dt>SOLTILOを知ろう</dt>
+                        <dd>
+                            <em className="recommend-dot">活動</em>を
+                            <em>紹介します</em>
+                        </dd>
+                    </dl>
+                        <ul className={check_slider_p.length === 1 ? "none" : "check_btn_flex"}>
                             <li>
                                 <button
                                     className="btn-reset"
@@ -518,11 +531,12 @@ function Result() {
                                                 check_slider_p.length) %
                                                 check_slider_p.length
                                         );
-                                        setCheckbtn_toggle("left");
+                                        setCheckbtn_toggle("check_left");
+                                        setBtn_toggle("")
                                     }}
                                 >
                                     <img
-                                        src={slider_btn_left}
+                                        src={check_left_btn}
                                         alt="leftボタン"
                                     />
                                 </button>
@@ -535,17 +549,19 @@ function Result() {
                                             (check_slider + 1) %
                                                 check_slider_p.length
                                         );
-                                        setCheckbtn_toggle("right");
+                                        setCheckbtn_toggle("check_right");
+                                        setBtn_toggle("")
                                     }}
                                 >
                                     <img
-                                        src={slider_btn_right}
+                                        src={check_right_btn}
                                         alt="rightボタン"
                                     />
                                 </button>
                             </li>
                         </ul>
-                        <section className="check_section" ref={fead_check}>
+                        <Fade direction="up" duration="800">
+                        <section className="check_section">
                             <figure>
                                 <img
                                     src={check_img[check_slider]}
@@ -560,12 +576,13 @@ function Result() {
                                 <dd>{check_slider_dd[check_slider]}</dd>
                             </dl>
                         </section>
+                        </Fade>
                     </section>
                     <div className="check_slider_active_flex">
                         {check_slider_p.map((key, i) => (
                             <button
-                                onClick={() => setCheckslider(i)}
-                                className="btn-reset check_slider_padding"
+                                onClick={() => {setCheckslider(i); setBtn_toggle(""); i>check_slider?setCheckbtn_toggle("check_right"):setCheckbtn_toggle("check_left")}}
+                                className={check_slider_p.length === 1 ? "none" : "btn-reset check_slider_padding"}
                             >
                                 <p
                                     className={
@@ -579,10 +596,10 @@ function Result() {
                     </div>
                 </article>
                 <section>
-                    <dl className="result-title">
+                    <dl className="recommend-title">
                         <dt>一緒に成長しよう</dt>
                         <dd>
-                            <em className="result-dot">選手</em>を
+                            <em className="recommend-dot">選手</em>を
                             <em>紹介します</em>
                         </dd>
                     </dl>
@@ -593,6 +610,7 @@ function Result() {
                                 onClick={() => {
                                     setSlider((slider - 1 + 6) % 6);
                                     setBtn_toggle("left");
+                                    setCheckbtn_toggle("");
                                 }}
                             >
                                 <img src={slider_btn_left} alt="leftボタン" />
@@ -604,20 +622,21 @@ function Result() {
                                 onClick={() => {
                                     setSlider((slider + 1) % 6);
                                     setBtn_toggle("right");
+                                    setCheckbtn_toggle("");
                                 }}
                             >
                                 <img src={slider_btn_right} alt="rightボタン" />
                             </button>
                         </li>
                     </ul>
-                    <div className="slider-img-flex" ref={fead_img}>
+                    <div className="slider-img-flex fead_img">
                         <figure className="result_slider_img">
                             <img src={img_slider[slider]} alt="" />
                         </figure>
                         <p>SOLTILO CHIBA FC</p>
                     </div>
                     <Fade direction="up" duration="800">
-                        <div ref={fead_text}>
+                        <div className="fead_text">
                             <h5 className="result-sbtitle">
                                 {data.slider.player[slider]}
                             </h5>
@@ -625,7 +644,7 @@ function Result() {
                         </div>
                     </Fade>
                     <div className="slider-active-flex">
-                        <button onClick={() => setSlider(0)}>
+                        <button onClick={() => {setSlider(0); setCheckbtn_toggle(""); 0>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 0
@@ -634,7 +653,7 @@ function Result() {
                                 }
                             ></p>
                         </button>
-                        <button onClick={() => setSlider(1)}>
+                        <button onClick={() =>{ setSlider(1); setCheckbtn_toggle(""); 1>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 1
@@ -643,7 +662,7 @@ function Result() {
                                 }
                             ></p>
                         </button>
-                        <button onClick={() => setSlider(2)}>
+                        <button onClick={() => {setSlider(2); setCheckbtn_toggle(""); 2>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 2
@@ -652,7 +671,7 @@ function Result() {
                                 }
                             ></p>
                         </button>
-                        <button onClick={() => setSlider(3)}>
+                        <button onClick={() => {setSlider(3);setCheckbtn_toggle(""); 3>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 3
@@ -661,7 +680,7 @@ function Result() {
                                 }
                             ></p>
                         </button>
-                        <button onClick={() => setSlider(4)}>
+                        <button onClick={() => {setSlider(4); setCheckbtn_toggle(""); 4>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 4
@@ -670,7 +689,7 @@ function Result() {
                                 }
                             ></p>
                         </button>
-                        <button onClick={() => setSlider(5)}>
+                        <button onClick={() => {setSlider(5); setCheckbtn_toggle(""); 5>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
                             <p
                                 className={
                                     slider === 5
