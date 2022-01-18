@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import height_img from "./assets/img/height-img.svg";
-import height_img_memori from "./assets/img/height-omg-memori.svg";
+import height_img_memori from "./assets/img/height-omg-memori.png";
 import {useContext} from "react";
 import {GlobalContext} from "./index.js";
 
@@ -25,7 +25,7 @@ function Question5() {
             ", #00AEEF " +
             raito_init +
             " 80%)",
-        height: "300px",
+        height: "255px",
         "borderRadius": "20px",
         "marginRight": "10px",
     };
@@ -41,6 +41,7 @@ function Question5() {
                     </dd>
                 </dl>
                 <div className="height-form">
+                <p>ここに数字を入力してください</p>
                     <input
                         type="number"
                         className="input_height"
@@ -59,7 +60,7 @@ function Question5() {
                     <img
                         src={height_img_memori}
                         alt="メモリ"
-                        height="300px"
+                        height="260px"
                         className="memori"
                     />
                     <div style={ratio_style}></div>

@@ -3,6 +3,7 @@ import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
 import result_now_img0 from "./assets/img/result-now-img.png";
+import result_now_img1 from "./assets/img/result_now_abe.png";
 import result_now_img2 from "./assets/img/result_now_fujii.png";
 import result_now_img3 from "./assets/img/result_now_kuramoti.png";
 import result_now_img4 from "./assets/img/result_now_matumoto.png";
@@ -51,7 +52,7 @@ function Result() {
     let pagetop = context.pagetop;
     useEffect(() => {
         if (pagetop === true) {
-            window.scrollTo(0, 2200);
+            window.scrollTo(0, 2260);
             setContext({ ...context, pagetop: false });
         }
     });
@@ -236,8 +237,8 @@ function Result() {
         result_now_img = result_now_img4;
         now_array = 4;
     } else if (potision === "fw") {
-        result_now_img = result_now_img2;
-        now_array = 2;
+        result_now_img = result_now_img1;
+        now_array = 1;
     } else {
         result_now_img = result_now_img2;
         now_array = 2;
@@ -514,9 +515,9 @@ function Result() {
                 >
                     <section className="check_wrap">
                     <dl className="recommend-title">
-                        <dt>SOLTILOを知ろう</dt>
+                        <dt>SOLTILOを知ろう！</dt>
                         <dd>
-                            <em className="recommend-dot">活動</em>を
+                            <em>活動</em>を
                             <em>紹介します</em>
                         </dd>
                     </dl>
@@ -597,9 +598,9 @@ function Result() {
                 </article>
                 <section>
                     <dl className="recommend-title">
-                        <dt>一緒に成長しよう</dt>
+                        <dt>一緒に成長しよう！</dt>
                         <dd>
-                            <em className="recommend-dot">選手</em>を
+                            <em>選手</em>を
                             <em>紹介します</em>
                         </dd>
                     </dl>

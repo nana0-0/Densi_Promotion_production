@@ -23,6 +23,7 @@ function Question4() {
                     </dd>
                 </dl>
                 <div className="time-form">
+                    <p>ここに数字を入力してください</p>
                     <input
                         type="number"
                         className="input_time"

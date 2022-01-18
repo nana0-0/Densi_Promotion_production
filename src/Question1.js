@@ -9,8 +9,7 @@ import seiryo_img from "./assets/img/question1_seiryo.png";
 import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
 import { useContext } from "react";
 import { GlobalContext } from "./index.js";
-import { gsap } from "gsap";
-// import CSSRulePlugin from "gsap/CSSRulePlugin";
+
 
 function Question1() {
     const { context, setContext } = useContext(GlobalContext);
@@ -29,12 +28,6 @@ function Question1() {
 
     let sheets = document.styleSheets;
     let sheet = sheets[sheets.length - 1];
-
-    // const fead_img = useRef();
-    // useEffect(() => {
-    //     let rotet = CSSRulePlugin.getRule(".question-img-circle::before");
-    //     gsap.to(rotet, { rotation: 360 });
-    // });
 
     switch (select) {
         case "oosaka":
@@ -193,11 +186,6 @@ function Question1() {
                     </div>
                 </main>
             </div>
-            {/* <img
-                    src={selected_img_bg}
-                    alt="土台"
-                    className="question-img-circle-bg"
-                /> */}
             <div className="question-footer">
                 <Link to="/question2" className="question-enter-btn">
                     決定
