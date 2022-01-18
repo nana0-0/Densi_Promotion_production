@@ -130,6 +130,7 @@ function Result() {
         if (select === "chiba") {
             if (potision === "gk") {
                 result_good_img = result_good_chiba_gk;
+                result_good_img = data.good.chiba.img[0];
             } else if (confidence === true && (counter < 8 || height > 165)) {
                 result_good_img = result_good_chiba_pysical;
             } else if (confidence === false && (counter < 8 || height > 165)) {
@@ -217,13 +218,6 @@ function Result() {
     } else {
         gender_text = "OB";
     }
-
-    function good_returnimg(){
-        return(select === "chiba" ? data.good.chiba.img[good_array()] : select ==="oosaka" ? data.good.oosaka.img[good_array()] : select ==="tokyo" ? data.good.tokyo.img[good_array()] : (select === "seiryo")&&(
-             gender === "male") ? data.good.seiryo.boys.img[good_array()] : (select === "seiryo")&&
-             (gender === "woman") ? data.good.seiryo.ladies[good_array()] : console.log(""))
-        }
-        
 
     let now_array = 0;
 
@@ -459,7 +453,29 @@ function Result() {
                                     </li>
                                 </ul>
                                 <figure className="result_tokui_img">
-                                    <img src={good_returnimg()} alt=""/>
+                                    <img src={select === "chiba"
+                                            ? data.good.chiba.img[
+                                                  good_array()
+                                              ]
+                                            : select === "oosaka"
+                                            ? data.good.oosaka.img[
+                                                  good_array()
+                                              ]
+                                            : select === "tokyo"
+                                            ? data.good.tokyo.img[
+                                                  good_array()
+                                              ]
+                                            : select === "seiryo" &&
+                                              gender === "male"
+                                            ? data.good.seiryo.boys.img[
+                                                  good_array()
+                                              ]
+                                            : select === "seiryo" &&
+                                              gender === "woman"
+                                            ? data.good.seiryo.ladies.img[
+                                                  good_array()
+                                              ]
+                                            : console.log("err")} alt=""/>
                                 </figure>
                             </section>
                             <section className="result-now">
