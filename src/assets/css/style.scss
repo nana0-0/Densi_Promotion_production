@@ -287,9 +287,9 @@ ol li:nth-child(3) figure {
 footer {
     width: 85%;
     margin: 0 auto;
-    margin-top: 85px;
     padding-top: 20px;
     border-top: 1px solid #fff;
+    margin-top: 105px;
 }
 
 .footer-logo {
@@ -512,15 +512,15 @@ h5 {
 
 .question-footer {
     text-align: center;
-    margin-top: 45px;
+    margin-top: 40px;
 }
 
 .questions-active-flex {
     display: flex;
     width: 65%;
     margin: 0 auto;
-    margin-top: 44px;
     justify-content: space-around;
+    padding-top: 40px;
 }
 
 .active-primary {
@@ -543,7 +543,6 @@ h5 {
     display: flex;
     justify-content: space-around;
     margin-top: 35px;
-    margin-bottom: 20px;
 }
 
 .woman-btn::before {
@@ -616,6 +615,7 @@ h5 {
     margin-top: 70px;
     text-align: center;
     position: relative;
+    margin-bottom: 34px;
 }
 
 .gender-img::after {
@@ -631,16 +631,18 @@ h5 {
 h6 {
     font-size: 2.8rem;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* 体力に自信がありますか？ */
 
 .confidence-img {
-    margin-top: 70px;
+    margin-top: 76px;
     text-align: center;
     position: relative;
-    margin-bottom: 29px;
-    height: 306px;
+    margin-bottom: 35px;
+    height: 315px;
 }
 
 .lamp-img {
@@ -805,7 +807,7 @@ h6 {
 .time-render-img {
     padding: 0;
     margin: 0;
-    margin-top: 35px;
+    margin-top: 43px;
     text-align: center;
 }
 
@@ -819,6 +821,15 @@ h6 {
     bottom: 170px;
     left: 48%;
     // transform: rotate(-10deg);
+}
+
+// 利き足はどっちですか？
+.foot-img{
+    margin-top: 76px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 34px;
+    height: 315px;
 }
 
 /* 身長は何cmですか？ */
@@ -895,7 +906,7 @@ h6 {
     align-items:flex-end;
     margin-top: 20px;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 48px;
     width: 90%;
 }
 
@@ -911,7 +922,7 @@ h6 {
 .height-render {
     font-size: 3.8rem;
     font-weight: normal;
-    margin-top: 13px;
+    margin-top: 23px;
 }
 
 /* どこのポジションですか？ */

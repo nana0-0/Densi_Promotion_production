@@ -16,9 +16,9 @@ function Question6() {
     let sheet = sheets[sheets.length - 1];
 
     if (foot === 'right') {
-        sheet.insertRule("h6 em { color: #FF046E }", sheet.cssRules.length);
-    } else {
         sheet.insertRule("h6 em { color: #00AEEF }", sheet.cssRules.length);
+    } else {
+        sheet.insertRule("h6 em { color: #FF046E }", sheet.cssRules.length);
     }
 
     return (
@@ -36,21 +36,21 @@ function Question6() {
                     <li>
                         <button
                             className="confidence-on-btn"
-                            onClick={() => setFoot('right')}
+                            onClick={() => setFoot('left')}
                         >
-                            右足
+                             左足
                         </button>
                     </li>
                     <li>
                         <button
                             className="confidence-off-btn"
-                            onClick={() => setFoot('left')}
+                            onClick={() => setFoot('right')}
                         >
-                            左足
+                            右足
                         </button>
                     </li>
                 </ul>
-                <figure className="confidence-img">
+                <figure className="foot-img">
                     <img src={foot_img} alt={foot_alt}/>
                 </figure>
                 <h6>

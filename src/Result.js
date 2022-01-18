@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
-import result_now_img0 from "./assets/img/result-now-img.png";
+import result_now_img0 from "./assets/img/result_now_hikaru.png";
 import result_now_img1 from "./assets/img/result_now_abe.png";
 import result_now_img2 from "./assets/img/result_now_fujii.png";
 import result_now_img3 from "./assets/img/result_now_kuramoti.png";
@@ -95,6 +95,8 @@ function Result() {
 
     let gender = context.gender;
     let select = context.select;
+
+    console.log(`${select}iiiiiiiiiiiiiiiii`)
     let confidence = context.confidence;
     let counter = context.counter;
     let height = context.height;
@@ -113,16 +115,12 @@ function Result() {
     let personalgym = context.personalgym;
 
     let weak_array_number;
-    let weak_img;
     if (confidence === false) {
         weak_array_number = 0;
-        weak_img = result_weak_img0;
     } else if (confidence === true && (counter < 8 || height > 165)) {
         weak_array_number = 1;
-        weak_img = result_weak_img1;
     } else {
         weak_array_number = 2;
-        weak_img = result_weak_img2;
     }
 
     let result_good_img = result_good_chiba_kantoku;
@@ -220,27 +218,28 @@ function Result() {
         gender_text = "OB";
     }
 
+    function good_returnimg(){
+        return(select === "chiba" ? data.good.chiba.img[good_array()] : select ==="oosaka" ? data.good.oosaka.img[good_array()] : select ==="tokyo" ? data.good.tokyo.img[good_array()] : (select === "seiryo")&&(
+             gender === "male") ? data.good.seiryo.boys.img[good_array()] : (select === "seiryo")&&
+             (gender === "woman") ? data.good.seiryo.ladies[good_array()] : console.log(""))
+        }
+        
+
     let now_array = 0;
-    let result_now_img;
 
     if (gender === "woman") {
-        result_now_img = result_now_img0;
+        now_array = 0;
     } else if (potision === "mf") {
         if (confidence === true) {
-            result_now_img = result_now_img2;
             now_array = 2;
         } else {
-            result_now_img = result_now_img3;
             now_array = 3;
         }
     } else if (potision === "df") {
-        result_now_img = result_now_img4;
         now_array = 4;
     } else if (potision === "fw") {
-        result_now_img = result_now_img1;
         now_array = 1;
     } else {
-        result_now_img = result_now_img2;
         now_array = 2;
     }
     const [slider, setSlider] = useState(0);
@@ -325,7 +324,6 @@ function Result() {
     }
 
     console.log(check_slider_p);
-
     return (
         <>
             <>
@@ -357,7 +355,7 @@ function Result() {
                                     </li>
                                 </ul>
                                 <figure className="result-now-img">
-                                    <img src={result_now_img} alt="" />
+                                    <img src={data.now.img[now_array]} alt="" />
                                 </figure>
                             </section>
                             <section className="result-now">
@@ -390,7 +388,7 @@ function Result() {
                                     </li>
                                 </ul>
                                 <figure className="result-nigate-img">
-                                    <img src={weak_img} alt="" />
+                                    <img src={data.weak.img[weak_array_number]} alt="" />
                                 </figure>
                             </section>
                             <section className="result-now">
@@ -461,7 +459,7 @@ function Result() {
                                     </li>
                                 </ul>
                                 <figure className="result_tokui_img">
-                                    <img src={good_img()} alt="" />
+                                    <img src={good_returnimg()} alt=""/>
                                 </figure>
                             </section>
                             <section className="result-now">
