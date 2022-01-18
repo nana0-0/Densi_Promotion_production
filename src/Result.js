@@ -2,46 +2,12 @@ import React from "react";
 import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
-import result_now_img0 from "./assets/img/result_now_hikaru.png";
-import result_now_img1 from "./assets/img/result_now_abe.png";
-import result_now_img2 from "./assets/img/result_now_fujii.png";
-import result_now_img3 from "./assets/img/result_now_kuramoti.png";
-import result_now_img4 from "./assets/img/result_now_matumoto.png";
-import result_weak_img0 from "./assets/img/result_weak_img0.png";
-import result_weak_img1 from "./assets/img/result_weak_img1.png";
-import result_weak_img2 from "./assets/img/result_weak_img2.png";
-import result_good_chiba_kantoku from "./assets/img/result_chiba_kantoku.png";
-import result_good_chiba_athletic from "./assets/img/result_chiba_athletic.png";
-import result_good_chiba_gk from "./assets/img/result_chiba_gk.png";
-import result_good_chiba_pysical from "./assets/img/result_chiba_pysical.png";
-import result_good_oosaka_head from "./assets/img/result_oosaka_head.png";
-import result_good_seiryo_head_l from "./assets/img/result_seiryo_head_l.png";
-import result_good_seiryo_head from "./assets/img/result_seiryo_head.png";
-import result_good_tokyo_head from "./assets/img/result_tokyo_head.png";
-import result_good_tokyo_athletic from "./assets/img/result_tokyo_athletic.png";
 import { useContext, useRef } from "react";
 import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
 import slider_btn_right from "./assets/img/result_slider_right.png";
-import slider_img0 from "./assets/img/result_slider_img0.png";
-import slider_img1 from "./assets/img/result_slider_img1.png";
-import slider_img2 from "./assets/img/result_slider_img2.png";
-import slider_img3 from "./assets/img/result_slider_img3.png";
-import slider_img4 from "./assets/img/result_slider_img4.png";
-import slider_img5 from "./assets/img/result_slider_img5.png";
-import check_tracking_img from "./assets/img/check_tracking_img.png";
-import check_dormitory_img from "./assets/img/check_dormitory_img.png";
-import check_expedition_img from "./assets/img/check_expedition_img.png";
-import check_gkcoach_img from "./assets/img/check_gkcoach_img.png";
-import check_institution_img from "./assets/img/check_institution_img.png";
-import check_lawn_img from "./assets/img/check_lawn_img.png";
-import check_physicalcoach_img from "./assets/img/check_physicalcoach_img.png";
-import check_trainer_img from "./assets/img/check_trainer_img.png";
-import check_foreigner_img from "./assets/img/check_foreigner_img.png";
-import check_sponser_img from "./assets/img/check_sponser_img.png";
-import check_personalgym_img from "./assets/img/check_personalgym_img.png";
-import check_left_btn from "./assets/img/check_left_btn.png"; 
-import check_right_btn from "./assets/img/check_right_btn.png"; 
+import check_left_btn from "./assets/img/check_left_btn.png";
+import check_right_btn from "./assets/img/check_right_btn.png";
 
 import { useState } from "react";
 import { gsap } from "gsap";
@@ -57,7 +23,6 @@ function Result() {
         }
     });
 
-   
     gsap.from(".fead_img", { x: 0 });
     gsap.from(".fead_text", { x: 0 });
     gsap.from(".check_section", { x: 0 });
@@ -66,14 +31,8 @@ function Result() {
     const [check_btn_toggle, setCheckbtn_toggle] = useState("");
 
     useEffect(() => {
-        console.log(check_btn_toggle)
-        console.log(btn_toggle)
-        if (check_btn_toggle === "check_right") {
-            gsap.from(".check_section", { x: -350 });
-        }
-        if (check_btn_toggle === "check_left") {
-            gsap.from(".check_section", { x: 150 });
-        }
+        check_btn_toggle==="check_right" ? gsap.from(".check_section", { x: -350 }) : console.log("");
+        check_btn_toggle === "check_left" ?  gsap.from(".check_section", { x: 150 }): console.log("");
         if (btn_toggle === "right") {
             gsap.from(".fead_img", { x: -350 });
             gsap.from(".fead_text", { x: -350 });
@@ -84,19 +43,9 @@ function Result() {
         }
     });
 
-    let img_slider = [
-        slider_img0,
-        slider_img1,
-        slider_img2,
-        slider_img3,
-        slider_img4,
-        slider_img5,
-    ];
-
     let gender = context.gender;
     let select = context.select;
 
-    console.log(`${select}iiiiiiiiiiiiiiiii`)
     let confidence = context.confidence;
     let counter = context.counter;
     let height = context.height;
@@ -123,44 +72,7 @@ function Result() {
         weak_array_number = 2;
     }
 
-    let result_good_img = result_good_chiba_kantoku;
     let result_good_array = 0;
-
-    function good_img() {
-        if (select === "chiba") {
-            if (potision === "gk") {
-                result_good_img = result_good_chiba_gk;
-                result_good_img = data.good.chiba.img[0];
-            } else if (confidence === true && (counter < 8 || height > 165)) {
-                result_good_img = result_good_chiba_pysical;
-            } else if (confidence === false && (counter < 8 || height > 165)) {
-                result_good_img = result_good_chiba_kantoku;
-            } else {
-                result_good_img = result_good_chiba_athletic;
-            }
-        } else if (select === "oosaka") {
-            if (potision === "gk") {
-                result_good_img = result_good_seiryo_head_l;
-            } else {
-                result_good_img = result_good_oosaka_head;
-            }
-        } else if (select === "seiryo") {
-            if (gender === "woman") {
-                result_good_img = result_good_seiryo_head_l;
-            } else {
-                result_good_img = result_good_seiryo_head;
-            }
-        } else {
-            if (potision === "gk") {
-                result_good_img = result_good_seiryo_head_l;
-            } else if (confidence === true && (counter < 8 || height > 165)) {
-                result_good_img = result_good_tokyo_head;
-            } else {
-                result_good_img = result_good_tokyo_athletic;
-            }
-        }
-        return result_good_img;
-    }
 
     function good_array() {
         if (select === "chiba") {
@@ -243,79 +155,17 @@ function Result() {
     let check_slider_dt = [];
     let check_slider_dd = [];
     let check_img = [];
-    if (tracking === true) {
-        check_slider_p.push(data.check.tracking.point);
-        check_slider_dt.push(data.check.tracking.title);
-        check_slider_dd.push(data.check.tracking.p);
-        check_img.push(check_tracking_img);
-    }
-    console.log(check_img);
-    if (gkcoach === true) {
-        check_slider_p.push(data.check.gkcoach.point);
-        check_slider_dt.push(data.check.gkcoach.title);
-        check_slider_dd.push(data.check.gkcoach.p);
-        check_img.push(check_gkcoach_img);
-    }
-    if (lawn === true) {
-        check_slider_p.push(data.check.lawn.point);
-        check_slider_dt.push(data.check.lawn.title);
-        check_slider_dd.push(data.check.lawn.p);
-        check_img.push(check_lawn_img);
-    }
-    if (dormitory === true) {
-        check_slider_p.push(data.check.dormitory.point);
-        check_slider_dt.push(data.check.dormitory.title);
-        check_slider_dd.push(data.check.dormitory.p);
-        check_img.push(check_dormitory_img);
-    }
-    if (expedition === true) {
-        check_slider_p.push(data.check.expedition.point);
-        check_slider_dt.push(data.check.expedition.title);
-        check_slider_dd.push(data.check.expedition.p);
-        check_img.push(check_expedition_img);
-    }
-    if (trainer === true) {
-        check_slider_p.push(data.check.trainer.point);
-        check_slider_dt.push(data.check.trainer.title);
-        check_slider_dd.push(data.check.trainer.p);
-        check_img.push(check_trainer_img);
-    }
-    if (knows === true) {
-        check_slider_p.push(data.check.knows.point);
-        check_slider_dt.push(data.check.knows.title);
-        check_slider_dd.push(data.check.knows.p);
-        check_img.push(check_tracking_img);
-    }
-    if (institution === true) {
-        check_slider_p.push(data.check.institution.point);
-        check_slider_dt.push(data.check.institution.title);
-        check_slider_dd.push(data.check.institution.p);
-        check_img.push(check_institution_img);
-    }
-    if (physicalcoach === true) {
-        check_slider_p.push(data.check.physicalcoach.point);
-        check_slider_dt.push(data.check.physicalcoach.title);
-        check_slider_dd.push(data.check.physicalcoach.p);
-        check_img.push(check_physicalcoach_img);
-    }
-    if (foreigner === true) {
-        check_slider_p.push(data.check.foreigner.point);
-        check_slider_dt.push(data.check.foreigner.title);
-        check_slider_dd.push(data.check.foreigner.p);
-        check_img.push(check_foreigner_img);
-    }
-    if (sponser === true) {
-        check_slider_p.push(data.check.sponser.point);
-        check_slider_dt.push(data.check.sponser.title);
-        check_slider_dd.push(data.check.sponser.p);
-        check_img.push(check_sponser_img);
-    }
-    if (personalgym === true) {
-        check_slider_p.push(data.check.personalgym.point);
-        check_slider_dt.push(data.check.personalgym.title);
-        check_slider_dd.push(data.check.personalgym.p);
-        check_img.push(check_personalgym_img);
-    }
+
+    const checkFor = [tracking,gkcoach,lawn,dormitory,expedition,trainer,knows,institution,physicalcoach,foreigner,sponser,personalgym]
+
+    checkFor.map((o,i)=>{
+        if(o===true){
+            check_slider_dt.push(data.testcheck.title[i]);
+            check_slider_p.push(data.testcheck.point[i]);
+            check_slider_dd.push(data.testcheck.p[i]);
+            check_img.push(data.testcheck.img[i])
+        }
+    })
 
     console.log(check_slider_p);
     return (
@@ -382,7 +232,10 @@ function Result() {
                                     </li>
                                 </ul>
                                 <figure className="result-nigate-img">
-                                    <img src={data.weak.img[weak_array_number]} alt="" />
+                                    <img
+                                        src={data.weak.img[weak_array_number]}
+                                        alt=""
+                                    />
                                 </figure>
                             </section>
                             <section className="result-now">
@@ -423,7 +276,7 @@ function Result() {
                                         ? data.good.seiryo.ladies.staff[
                                               good_array()
                                           ]
-                                        : console.log("goodエラー")}
+                                        : data.good.chiba.staff[good_array()]}
                                 </h5>
                                 <ul>
                                     <li className="result-tokui-point1">
@@ -449,33 +302,40 @@ function Result() {
                                             ? data.good.seiryo.ladies.point[
                                                   good_array()
                                               ]
-                                            : console.log("err")}
+                                            : data.good.chiba.point[
+                                                  good_array()
+                                              ]}
                                     </li>
                                 </ul>
                                 <figure className="result_tokui_img">
-                                    <img src={select === "chiba"
-                                            ? data.good.chiba.img[
-                                                  good_array()
-                                              ]
-                                            : select === "oosaka"
-                                            ? data.good.oosaka.img[
-                                                  good_array()
-                                              ]
-                                            : select === "tokyo"
-                                            ? data.good.tokyo.img[
-                                                  good_array()
-                                              ]
-                                            : select === "seiryo" &&
-                                              gender === "male"
-                                            ? data.good.seiryo.boys.img[
-                                                  good_array()
-                                              ]
-                                            : select === "seiryo" &&
-                                              gender === "woman"
-                                            ? data.good.seiryo.ladies.img[
-                                                  good_array()
-                                              ]
-                                            : console.log("err")} alt=""/>
+                                    <img
+                                        src={
+                                            select === "chiba"
+                                                ? data.good.chiba.img[
+                                                      good_array()
+                                                  ]
+                                                : select === "oosaka"
+                                                ? data.good.oosaka.img[
+                                                      good_array()
+                                                  ]
+                                                : select === "tokyo"
+                                                ? data.good.tokyo.img[
+                                                      good_array()
+                                                  ]
+                                                : select === "seiryo" &&
+                                                  gender === "male"
+                                                ? data.good.seiryo.boys.img[
+                                                      good_array()
+                                                  ]
+                                                : select === "seiryo" &&
+                                                  gender === "woman"
+                                                ? data.good.seiryo.ladies.img[
+                                                      good_array()
+                                                  ]
+                                                : data.good.chiba.img[0]
+                                        }
+                                        alt=""
+                                    />
                                 </figure>
                             </section>
                             <section className="result-now">
@@ -528,14 +388,19 @@ function Result() {
                     }
                 >
                     <section className="check_wrap">
-                    <dl className="recommend-title">
-                        <dt>SOLTILOを知ろう！</dt>
-                        <dd>
-                            <em>活動</em>を
-                            <em>紹介します</em>
-                        </dd>
-                    </dl>
-                        <ul className={check_slider_p.length === 1 ? "none" : "check_btn_flex"}>
+                        <dl className="recommend-title">
+                            <dt>SOLTILOを知ろう！</dt>
+                            <dd>
+                                <em>活動</em>を<em>紹介します</em>
+                            </dd>
+                        </dl>
+                        <ul
+                            className={
+                                check_slider_p.length === 1
+                                    ? "none"
+                                    : "check_btn_flex"
+                            }
+                        >
                             <li>
                                 <button
                                     className="btn-reset"
@@ -547,7 +412,7 @@ function Result() {
                                                 check_slider_p.length
                                         );
                                         setCheckbtn_toggle("check_left");
-                                        setBtn_toggle("")
+                                        setBtn_toggle("");
                                     }}
                                 >
                                     <img
@@ -565,7 +430,7 @@ function Result() {
                                                 check_slider_p.length
                                         );
                                         setCheckbtn_toggle("check_right");
-                                        setBtn_toggle("")
+                                        setBtn_toggle("");
                                     }}
                                 >
                                     <img
@@ -576,28 +441,39 @@ function Result() {
                             </li>
                         </ul>
                         <Fade direction="up" duration="800">
-                        <section className="check_section">
-                            <figure>
-                                <img
-                                    src={check_img[check_slider]}
-                                    alt="tracking"
-                                />
-                            </figure>
-                            <p className="check_point">
-                                {check_slider_p[check_slider]}
-                            </p>
-                            <dl>
-                                <dt>{check_slider_dt[check_slider]}</dt>
-                                <dd>{check_slider_dd[check_slider]}</dd>
-                            </dl>
-                        </section>
+                            <section className="check_section">
+                                <figure>
+                                    <img
+                                        src={check_img[check_slider]}
+                                        alt="tracking"
+                                    />
+                                </figure>
+                                <p className="check_point">
+                                    {check_slider_p[check_slider]}
+                                </p>
+                                <dl>
+                                    <dt>{check_slider_dt[check_slider]}</dt>
+                                    <dd>{check_slider_dd[check_slider]}</dd>
+                                </dl>
+                            </section>
                         </Fade>
                     </section>
                     <div className="check_slider_active_flex">
-                        {check_slider_p.map((key, i) => (
+                        {check_slider_p.map((o, i) => (
                             <button
-                                onClick={() => {setCheckslider(i); setBtn_toggle(""); i>check_slider?setCheckbtn_toggle("check_right"):setCheckbtn_toggle("check_left")}}
-                                className={check_slider_p.length === 1 ? "none" : "btn-reset check_slider_padding"}
+                            key={o.toString()}
+                                onClick={() => {
+                                    setCheckslider(i);
+                                    setBtn_toggle("");
+                                    i > check_slider
+                                        ? setCheckbtn_toggle("check_right")
+                                        : setCheckbtn_toggle("check_left");
+                                }}
+                                className={
+                                    check_slider_p.length === 1
+                                        ? "none"
+                                        : "btn-reset check_slider_padding"
+                                }
                             >
                                 <p
                                     className={
@@ -614,8 +490,7 @@ function Result() {
                     <dl className="recommend-title">
                         <dt>一緒に成長しよう！</dt>
                         <dd>
-                            <em>選手</em>を
-                            <em>紹介します</em>
+                            <em>選手</em>を<em>紹介します</em>
                         </dd>
                     </dl>
                     <ul className="slider_btn_flex">
@@ -646,7 +521,7 @@ function Result() {
                     </ul>
                     <div className="slider-img-flex fead_img">
                         <figure className="result_slider_img">
-                            <img src={img_slider[slider]} alt="" />
+                            <img src={data.slider.img[slider]} alt="" />
                         </figure>
                         <p>SOLTILO CHIBA FC</p>
                     </div>
@@ -659,60 +534,27 @@ function Result() {
                         </div>
                     </Fade>
                     <div className="slider-active-flex">
-                        <button onClick={() => {setSlider(0); setCheckbtn_toggle(""); 0>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 0
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
-                        <button onClick={() =>{ setSlider(1); setCheckbtn_toggle(""); 1>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 1
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
-                        <button onClick={() => {setSlider(2); setCheckbtn_toggle(""); 2>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 2
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
-                        <button onClick={() => {setSlider(3);setCheckbtn_toggle(""); 3>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 3
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
-                        <button onClick={() => {setSlider(4); setCheckbtn_toggle(""); 4>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 4
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
-                        <button onClick={() => {setSlider(5); setCheckbtn_toggle(""); 5>slider?setBtn_toggle("right"):setBtn_toggle("left")}}>
-                            <p
-                                className={
-                                    slider === 5
-                                        ? "slider-active-primary"
-                                        : "slider-active-normal"
-                                }
-                            ></p>
-                        </button>
+                        {data.slider.img.map((o, i) => (
+                            <button
+                            key={o.toString()}
+                                onClick={() => {
+                                    setSlider(i);
+                                    setCheckbtn_toggle("");
+                                    i > slider
+                                    ? setBtn_toggle("right")
+                                    : setBtn_toggle("left");
+                                }}
+                                className="btn-reset"
+                            >
+                                <p
+                                    className={
+                                        i === slider
+                                            ? "slider-active-primary"
+                                            : "slider-active-normal"
+                                    }
+                                ></p>
+                            </button>
+                        ))}
                     </div>
                 </section>
                 <Footer />

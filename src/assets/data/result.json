@@ -1,10 +1,34 @@
 {
     "now": {
-        "og": ["「北川ひかる選手」", "「安部裕葵選手」","「藤井海和選手」","「倉持快選手」","「松本大輔選手」"],
+        "og": [
+            "「北川ひかる選手」",
+            "「安部裕葵選手」",
+            "「藤井海和選手」",
+            "「倉持快選手」",
+            "「松本大輔選手」"
+        ],
         "dt": ["POSITION"],
-        "dd": ["DF：ディフェンダー","FW：フォワード","MF：ミッドフィールダー","MF：ミッドフィールダー","DF：ディフェンダー"],
-        "point1": ["圧倒的なスピード","チャンスメーク","圧倒的な守備","圧倒的なスピード","優位な高身長"],
-        "point2": ["希少な左利き","鋭いドリブル","メンタリティの強さ","抜群の瞬発力","判断能力の高さ"],
+        "dd": [
+            "DF：ディフェンダー",
+            "FW：フォワード",
+            "MF：ミッドフィールダー",
+            "MF：ミッドフィールダー",
+            "DF：ディフェンダー"
+        ],
+        "point1": [
+            "圧倒的なスピード",
+            "チャンスメーク",
+            "圧倒的な守備",
+            "圧倒的なスピード",
+            "優位な高身長"
+        ],
+        "point2": [
+            "希少な左利き",
+            "鋭いドリブル",
+            "メンタリティの強さ",
+            "抜群の瞬発力",
+            "判断能力の高さ"
+        ],
         "p": [
             "北川ひかる選手はスピードあり左利きという極めて珍しい特徴持っています。ぜひ彼女のプレイを参考にしてみて下さい！",
             "安部裕葵選手はスピードに乗った鋭いドリブルを武器に味方を生かしてゴールに直結するという特徴を持っています。ぜひ彼のププレイを参考にしてみて下さい！",
@@ -12,7 +36,13 @@
             "倉持快選手はスピードを生かした突破と抜群の瞬発力を生かしたプレーが特徴です。ぜひ彼のププレイを参考にしてみて下さい！",
             "安部裕葵選手はスピードに乗った鋭いドリブルを武器に味方を生かしてゴールに直結するという特徴を持っています。ぜひ彼のププレイを参考にしてみて下さい！"
         ],
-        "img": ["img/result_now_hikaru.png","img/result_now_abe.png","img/result_now_fujii.png","img/result_now_kuramoti.png","img/result_now_matumoto.png"]
+        "img": [
+            "img/result_now_hikaru.png",
+            "img/result_now_abe.png",
+            "img/result_now_fujii.png",
+            "img/result_now_kuramoti.png",
+            "img/result_now_matumoto.png"
+        ]
     },
     "weak": {
         "training": [
@@ -20,7 +50,11 @@
             "「テクニック強化トレーニング」",
             "「判断力強化トレーニング」"
         ],
-        "img":["img/result_weak_img0.png","img/result_weak_img1.png","img/result_weak_img2.png"],
+        "img": [
+            "img/result_weak_img0.png",
+            "img/result_weak_img1.png",
+            "img/result_weak_img2.png"
+        ],
         "point": ["自由にコントロール", "スキルを向上できる", "⾃ら判断する力"],
         "dt": ["SOLTILO"],
         "dd": ["育成メソッド"],
@@ -57,8 +91,11 @@
                 "選手のフィジカル面でのトレーニング管理、育成をしています。",
                 "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。"
             ],
-            "img":[
-                "img/result_chiba_kantoku.png","img/result_chiba_gk.png","img/result_chiba_pysical.png","img/result_chiba_athletic.png"
+            "img": [
+                "img/result_chiba_kantoku.png",
+                "img/result_chiba_gk.png",
+                "img/result_chiba_pysical.png",
+                "img/result_chiba_athletic.png"
             ]
         },
         "tokyo": {
@@ -75,7 +112,11 @@
                 "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。",
                 "優秀な選手を輩出するため、ゴールキーパー選手のトレーニング管理・育成をしています。"
             ],
-            "img": ["img/result_tokyo_head.png","img/result_tokyo_athletic.png","img/result_seiryo_head_l.png"]
+            "img": [
+                "img/result_tokyo_head.png",
+                "img/result_tokyo_athletic.png",
+                "img/result_seiryo_head_l.png"
+            ]
         },
         "seiryo": {
             "boys": {
@@ -96,7 +137,7 @@
                 "p": [
                     "LADIESの監督をしています。技術だけでなく精神面も徹底的にサポートしていきます。"
                 ],
-                "img":["img/result_seiryo_head_l.png"]
+                "img": ["img/result_seiryo_head_l.png"]
             }
         },
         "oosaka": {
@@ -108,7 +149,10 @@
                 "チーム代表をしています。技術だけでなく精神面も徹底的にサポートしていきます。",
                 "優秀な選手を輩出するため、ゴールキーパー選手のトレーニング管理・育成をしています。"
             ],
-            "img": ["img/result_oosaka_head.png","img/result_seiryo_head_l.png"]
+            "img": [
+                "img/result_oosaka_head.png",
+                "img/result_seiryo_head_l.png"
+            ]
         }
     },
     "slider": {
@@ -128,89 +172,71 @@
             "SOLTILOに入って技術だけでなく精神的にも成長することができた。",
             "技術だけでなく精神的にも成長することができた。"
         ],
-        "img": ["img/result_slider_img0.png","img/result_slider_img1.png","img/result_slider_img2.png","img/result_slider_img3.png","img/result_slider_img4.png","img/result_slider_img5.png"]
+        "img": [
+            "img/result_slider_img0.png",
+            "img/result_slider_img1.png",
+            "img/result_slider_img2.png",
+            "img/result_slider_img3.png",
+            "img/result_slider_img4.png",
+            "img/result_slider_img5.png"
+        ]
     },
-    "check": {
-        "tracking": {
-            "title": "トラッキングシステム",
-            "point": "＃技術でサポート",
-            "p": "運動中に身につけプレー中のデータを蓄積することによって事実と理論に基づいた的確なパフォーマンス向上の指導・育成を実現しています。",
-            "img":"img/check_tracking_img.png"
-        },
-        "gkcoach": {
-            "title": "GKコーチ",
-            "point": "＃GK選手をサポート",
-            "p": "優秀な選手を輩出するため、ゴールキーパー選手のトレーニング管理・育成をしています。",
-            "img":"img/check_gkcoach_img.png"
-        },
-        "lawn": {
-            "title": "人工芝生",
-            "point": "＃環境を整備",
-            "p": "SOLTILO CHIBAではすべて人工芝で完備されたZOZOPARK HONDA FOOTBALL AREAを使用しています。最適な環境作りは子供たちの育成・教育に欠かせないと考えています。",
-            "img":"img/check_lawn_img.png"
-        },
-        "dormitory": {
-            "title": "選手寮",
-            "point": "＃地方の選手を応援",
-            "p": "SOLTILO CHIBAではトレーニング場から徒歩10分の程度のところに選手寮を完備しています。選手寮にはスタッフが常駐して、食事の栄養管理も行っております。",
-            "img":"img/check_dormitory_img.png"
-        },
-        "expedition": {
-            "title": "海外遠征",
-            "point": "＃世界に挑戦",
-            "p": "世界トップのアスリートや施設を間近で見ることによって学べることは多いと思います。そのため、WAHSではチームが海外遠征を実施できるように努めています。",
-            "li1":"２０１８年　ミラノ遠征",
-            "li2":"２０１９年　バルセロナ遠征",
-            "li3":"２０１９年　上海遠征",
-            "img":"img/check_expedition_img.png"
-        },
-        "trainer": {
-            "title": "リハビリトレーナー",
-            "point": "＃怪我の対策を徹底",
-            "p": "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。",
-            "img":"img/check_trainer_img.png"
-        },
-        "knows": {
-            "title": "knows",
-            "point": "＃技術でサポート",
-            "p": "運動中に身につけプレー中のデータを蓄積することによって事実と理論に基づいた的確なパフォーマンス向上の指導・育成を実現しています。",
-            "img":"img/check_tracking_img.png"
-        },
-        "institution": {
-            "title": "広い施設",
-            "point": "＃環境を整備",
-            "p": "最適な環境作りは子供たちの育成・教育に欠かせないと考えています。",
-            "li1":"ZOZOPARK HONDA FOOTBALL AREA",
-            "li2":"SOLTILO金沢大 FIELD (石川金沢/フルコート２面）",
-            "li3":"清瀬内山公園運動公園（東京清瀬市/指定管理施設）",
-            "img":"img/check_institution_img.png"
-        },
-        "physicalcoach": {
-            "title": "フィジカルコーチ",
-            "point": "＃怪我の対策を徹底",
-            "p": "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。",
-            "img":"img/check_physicalcoach_img.png"
-        },
-        "foreigner": {
-            "title": "外国人選手",
-            "point": "＃コミュニケーション",
-            "p": "言葉の通じないチームメイトと時間を共にすることで各選手のコミュニケーション能力の向上、そしてグループ価値の向上も期待できます。",
-            "li1":"韓国・中国・カンボジア",
-            "li2":"メキシコ・パラグアイ",
-            "li3":"ケニア",
-            "img":"img/check_foreigner_img.png"
-        },
-        "sponser": {
-            "title": "スポンサー",
-            "point": "＃選手をサポート",
-            "p": "いつもご協賛いただき、ありがとうございます。",
-            "img": "img/check_sponser_img.png"
-        },
-        "personalgym": {
-            "title": "パーソナルジム",
-            "point": "＃技術をサポート",
-            "p": "パーソナルジムと連携させて選手の技術を促進させています。",
-            "img": "img/check_personalgym_img.pngimg/check_personalgym_img.png"
-        }
+    "testcheck": {
+        "title": [
+            "トラッキングシステム",
+            "GKコーチ",
+            "人工芝生",
+            "選手寮",
+            "海外遠征",
+            "リハビリトレーナー",
+            "knows",
+            "広い施設",
+            "フィジカルコーチ",
+            "外国人選手",
+            "スポンサー",
+            "パーソナルジム"
+        ],
+        "point": [
+            "＃技術でサポート",
+            "＃GK選手をサポート",
+            "＃環境を整備",
+            "＃地方の選手を応援",
+            "＃世界に挑戦",
+            "＃怪我の対策を徹底",
+            "＃技術でサポート",
+            "＃環境を整備",
+            "＃怪我の対策を徹底",
+            "＃コミュニケーション",
+            "＃選手をサポート",
+            "＃技術をサポート"
+        ],
+        "p": [
+            "運動中に身につけプレー中のデータを蓄積することによって事実と理論に基づいた的確なパフォーマンス向上の指導・育成を実現しています。",
+            "優秀な選手を輩出するため、ゴールキーパー選手のトレーニング管理・育成をしています。",
+            "SOLTILO CHIBAではすべて人工芝で完備されたZOZOPARK HONDA FOOTBALL AREAを使用しています。最適な環境作りは子供たちの育成・教育に欠かせないと考えています。",
+            "SOLTILO CHIBAではトレーニング場から徒歩10分の程度のところに選手寮を完備しています。選手寮にはスタッフが常駐して、食事の栄養管理も行っております。",
+            "世界トップのアスリートや施設を間近で見ることによって学べることは多いと思います。そのため、WAHSではチームが海外遠征を実施できるように努めています。",
+            "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。",
+            "運動中に身につけプレー中のデータを蓄積することによって事実と理論に基づいた的確なパフォーマンス向上の指導・育成を実現しています。",
+            "最適な環境作りは子供たちの育成・教育に欠かせないと考えています。",
+            "怪我をしている選手のリハビリ、選手の怪我予防のトレーニング管理をしています。",
+            "言葉の通じないチームメイトと時間を共にすることで各選手のコミュニケーション能力の向上、そしてグループ価値の向上も期待できます。",
+            "いつもご協賛いただき、ありがとうございます。",
+            "パーソナルジムと連携させて選手の技術を促進させています。"
+        ],
+        "img": [
+            "img/check_tracking_img.png",
+            "img/check_gkcoach_img.png",
+            "img/check_lawn_img.png",
+            "img/check_dormitory_img.png",
+            "img/check_expedition_img.png",
+            "img/check_trainer_img.png",
+            "img/check_tracking_img.png",
+            "img/check_institution_img.png",
+            "img/check_physicalcoach_img.png",
+            "img/check_foreigner_img.png",
+            "img/check_sponser_img.png",
+            "img/check_personalgym_img.png"
+        ]
     }
 }
