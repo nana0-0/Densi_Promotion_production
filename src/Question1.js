@@ -1,4 +1,4 @@
-import {React, useEffect} from "react";
+import {React} from "react";
 import { Link } from "react-router-dom";
 import japan_img from "./assets/img/question1_japanimg.svg";
 import oosaka_img from "./assets/img/question1_oosaka.png";
