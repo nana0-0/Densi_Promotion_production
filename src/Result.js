@@ -2,37 +2,85 @@ import React from "react";
 import { Header, Footer, Topmain } from "./common.js";
 import data from "./assets/data/result.json";
 import { useEffect } from "react";
-import { useContext, useRef } from "react";
-import { GlobalContext } from "./index.js";
 import slider_btn_left from "./assets/img/result_slider_left.png";
 import slider_btn_right from "./assets/img/result_slider_right.png";
 import check_left_btn from "./assets/img/check_left_btn.png";
 import check_right_btn from "./assets/img/check_right_btn.png";
-
+import { useRecoilValue } from "recoil";
+import { PrefectureState } from "./Question1.js";
+import { GenderState } from "./Question2.js";
+import { ConfidenceState } from "./Question3.js";
+import { CounterState } from "./Question4.js";
+import { HeightState } from "./Question5.js";
+import { PotisionState } from "./Question7.js";
+import {
+    TrackingState,
+    GkcoachState,
+    LawnState,
+    DormitoryState,
+    ExpeditionState,
+    TrainerState,
+    KnowsState,
+    InstitutionState,
+    PhysicalcoachState,
+    ForeignerState,
+    SponserState,
+    PersonalgymState,
+    PagetopState
+} from "./Question8.js";
 import { useState } from "react";
 import { gsap } from "gsap";
 import { Fade } from "react-awesome-reveal";
+import { useRecoilState } from "recoil";
 
 function Result() {
-    const { context, setContext } = useContext(GlobalContext);
-    let pagetop = context.pagetop;
+
+    // 質問で答えた値を受け渡す
+    const gender = useRecoilValue(GenderState);
+    const select = useRecoilValue(PrefectureState);
+    const confidence = useRecoilValue(ConfidenceState);
+    const counter = useRecoilValue(CounterState);
+    const height = useRecoilValue(HeightState);
+    const potision = useRecoilValue(PotisionState);
+    let tracking = useRecoilValue(TrackingState);
+    let gkcoach = useRecoilValue(GkcoachState);
+    let lawn = useRecoilValue(LawnState);
+    let dormitory = useRecoilValue(DormitoryState);
+    let expedition = useRecoilValue(ExpeditionState);
+    let trainer = useRecoilValue(TrainerState);
+    let knows = useRecoilValue(KnowsState);
+    let institution = useRecoilValue(InstitutionState);
+    let physicalcoach = useRecoilValue(PhysicalcoachState);
+    let foreigner = useRecoilValue(ForeignerState);
+    let sponser = useRecoilValue(SponserState);
+    let personalgym = useRecoilValue(PersonalgymState);
+    const [pagetop, setPagetop] = useRecoilState(PagetopState)
+
+    // 診断結果の位置に飛ばす
     useEffect(() => {
         if (pagetop === true) {
             window.scrollTo(0, 2260);
-            setContext({ ...context, pagetop: false });
+            setPagetop(false);
         }
     });
 
+    // スライダーのボタンのオン・オフ
+    const [btn_toggle, setBtn_toggle] = useState("");
+    const [check_btn_toggle, setCheckbtn_toggle] = useState("");
+
+    // スライダーの初期値
     gsap.from(".fead_img", { x: 0 });
     gsap.from(".fead_text", { x: 0 });
     gsap.from(".check_section", { x: 0 });
 
-    const [btn_toggle, setBtn_toggle] = useState("");
-    const [check_btn_toggle, setCheckbtn_toggle] = useState("");
-
+    // スライダーのエフェクト
     useEffect(() => {
-        check_btn_toggle==="check_right" ? gsap.from(".check_section", { x: -350 }) : console.log("");
-        check_btn_toggle === "check_left" ?  gsap.from(".check_section", { x: 150 }): console.log("");
+        check_btn_toggle === "check_right"
+            ? gsap.from(".check_section", { x: -350 })
+            : console.log("");
+        check_btn_toggle === "check_left"
+            ? gsap.from(".check_section", { x: 150 })
+            : console.log("");
         if (btn_toggle === "right") {
             gsap.from(".fead_img", { x: -350 });
             gsap.from(".fead_text", { x: -350 });
@@ -43,111 +91,56 @@ function Result() {
         }
     });
 
-    let gender = context.gender;
-    let select = context.select;
+    // 苦手を克服しようの分岐
+    let weak_array_number = 0;
+    confidence === false
+        ? (weak_array_number = 0)
+        : confidence === true && (counter < 8 || height > 165)
+        ? (weak_array_number = 1)
+        : (weak_array_number = 2);
 
-    let confidence = context.confidence;
-    let counter = context.counter;
-    let height = context.height;
-    let potision = context.potision;
-    let tracking = context.tracking;
-    let gkcoach = context.gkcoach;
-    let lawn = context.lawn;
-    let dormitory = context.dormitory;
-    let expedition = context.expedition;
-    let trainer = context.trainer;
-    let knows = context.knows;
-    let institution = context.institution;
-    let physicalcoach = context.physicalcoach;
-    let foreigner = context.foreigner;
-    let sponser = context.sponser;
-    let personalgym = context.personalgym;
-
-    let weak_array_number;
-    if (confidence === false) {
-        weak_array_number = 0;
-    } else if (confidence === true && (counter < 8 || height > 165)) {
-        weak_array_number = 1;
-    } else {
-        weak_array_number = 2;
-    }
-
+    // 得意を伸ばそうの分岐
     let result_good_array = 0;
-
     function good_array() {
         if (select === "chiba") {
-            if (potision === "gk") {
-                result_good_array = 1;
-            } else if (confidence === true && (counter < 8 || height > 165)) {
-                result_good_array = 2;
-            } else if (confidence === false && (counter < 8 || height > 165)) {
-                result_good_array = 0;
-            } else {
-                result_good_array = 3;
-            }
+            potision === "gk"
+                ? (result_good_array = 1)
+                : confidence === true && (counter < 8 || height > 165)
+                ? (result_good_array = 2)
+                : confidence === false && (counter < 8 || height > 165)
+                ? (result_good_array = 0)
+                : (result_good_array = 3);
         } else if (select === "oosaka") {
-            if (potision === "gk") {
-                result_good_array = 1;
-            } else {
-                result_good_array = 0;
-            }
+            potision === "gk"
+                ? (result_good_array = 1)
+                : (result_good_array = 0);
         } else if (select === "seiryo") {
             result_good_array = 0;
         } else {
-            if (potision === "gk") {
-                result_good_array = 2;
-            } else if (confidence === true && (counter < 8 || height > 165)) {
-                result_good_array = 0;
-            } else {
-                result_good_array = 1;
-            }
+            potision === "gk"
+                ? (result_good_array = 2)
+                : confidence === true && (counter < 8 || height > 165)
+                ? (result_good_array = 0)
+                : (result_good_array = 1);
         }
         return result_good_array;
     }
 
-    console.log(gender);
-    console.log(select);
-    console.log(confidence);
-    console.log(counter);
-    console.log(height);
-    console.log(potision);
-    console.log(tracking);
-    console.log(gkcoach);
-    console.log(lawn);
-    console.log(dormitory);
-    console.log(expedition);
-    console.log(trainer);
-    console.log(knows);
-    console.log(institution);
-    console.log(physicalcoach);
-    console.log(foreigner);
-    console.log(sponser);
-    console.log(personalgym);
-
-    let gender_text;
-    if (gender === "woman") {
-        gender_text = "OG";
-    } else {
-        gender_text = "OB";
-    }
+    let gender_text = gender === "woman" ? "OG" : "OB";
 
     let now_array = 0;
+    gender === "woman"
+        ? (now_array = 0)
+        : potision === "mf"
+        ? confidence === true
+            ? (now_array = 2)
+            : (now_array = 3)
+        : potision === "df"
+        ? (now_array = 4)
+        : potision === "fw"
+        ? (now_array = 1)
+        : (now_array = 2);
 
-    if (gender === "woman") {
-        now_array = 0;
-    } else if (potision === "mf") {
-        if (confidence === true) {
-            now_array = 2;
-        } else {
-            now_array = 3;
-        }
-    } else if (potision === "df") {
-        now_array = 4;
-    } else if (potision === "fw") {
-        now_array = 1;
-    } else {
-        now_array = 2;
-    }
     const [slider, setSlider] = useState(0);
     const [check_slider, setCheckslider] = useState(0);
 
@@ -156,16 +149,29 @@ function Result() {
     let check_slider_dd = [];
     let check_img = [];
 
-    const checkFor = [tracking,gkcoach,lawn,dormitory,expedition,trainer,knows,institution,physicalcoach,foreigner,sponser,personalgym]
+    const checkFor = [
+        tracking,
+        gkcoach,
+        lawn,
+        dormitory,
+        expedition,
+        trainer,
+        knows,
+        institution,
+        physicalcoach,
+        foreigner,
+        sponser,
+        personalgym,
+    ];
 
-    checkFor.map((o,i)=>{
-        if(o===true){
-            check_slider_dt.push(data.testcheck.title[i]);
-            check_slider_p.push(data.testcheck.point[i]);
-            check_slider_dd.push(data.testcheck.p[i]);
-            check_img.push(data.testcheck.img[i])
+    checkFor.map((o, i) => {
+        if (o === true) {
+            check_slider_dt.push(data.check.title[i]);
+            check_slider_p.push(data.check.point[i]);
+            check_slider_dd.push(data.check.p[i]);
+            check_img.push(data.check.img[i]);
         }
-    })
+    });
 
     console.log(check_slider_p);
     return (
@@ -459,9 +465,9 @@ function Result() {
                         </Fade>
                     </section>
                     <div className="check_slider_active_flex">
-                        {check_slider_p.map((o, i) => (
+                        {check_slider_dt.map((o, i) => (
                             <button
-                            key={o.toString()}
+                                key={o.toString()}
                                 onClick={() => {
                                     setCheckslider(i);
                                     setBtn_toggle("");
@@ -470,7 +476,7 @@ function Result() {
                                         : setCheckbtn_toggle("check_left");
                                 }}
                                 className={
-                                    check_slider_p.length === 1
+                                    check_slider_dt.length === 1
                                         ? "none"
                                         : "btn-reset check_slider_padding"
                                 }
@@ -536,13 +542,13 @@ function Result() {
                     <div className="slider-active-flex">
                         {data.slider.img.map((o, i) => (
                             <button
-                            key={o.toString()}
+                                key={o.toString()}
                                 onClick={() => {
                                     setSlider(i);
                                     setCheckbtn_toggle("");
                                     i > slider
-                                    ? setBtn_toggle("right")
-                                    : setBtn_toggle("left");
+                                        ? setBtn_toggle("right")
+                                        : setBtn_toggle("left");
                                 }}
                                 className="btn-reset"
                             >

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import foot_img from "./assets/img/foot-img.svg";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import { atom, useRecoilState } from "recoil";
+
+export const FootState = atom({
+    key: "foot",
+    default: "right",
+});
+
 
 function Question6() {
-    const { context, setContext } = useContext(GlobalContext);
-    const [foot, setFoot] = useState('right');
-
-    context.foot = foot;
+    const [foot, setFoot] = useRecoilState(FootState)
 
     let foot_alt = foot === 'right' ? "右足" : "左足";
     let sheets = document.styleSheets;

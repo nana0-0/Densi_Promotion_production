@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import react from "react";
+import React from "react";
 import kvimg from "./assets/img/headerimg.png";
 import footer_logo from "./assets/img/footer_logo.png";
 import sponser_1 from "./assets/img/sp_1.jpg";

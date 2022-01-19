@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import field_img from "./assets/img/field-img.svg";
 import gk_img from "./assets/img/question7_gk.png";
 import df_img from "./assets/img/question7_df.png";
 import mf_img from "./assets/img/question7_mf.png";
 import fw_img from "./assets/img/question7_fw.png";
-import { useContext } from "react";
-import { GlobalContext } from "./index.js";
-import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
+
+import { atom, useRecoilState } from "recoil";
+
+export const PotisionState = atom({
+    key: "potision",
+    default: "gk",
+});
+
 
 function Question7() {
-    const { context, setContext } = useContext(GlobalContext);
+    const [potision, setSelect] = useRecoilState(PotisionState)
     const toggle = [gk_img, df_img, mf_img, fw_img];
-    const [potision, setSelect] = useState("gk");
-    context.potision = potision;
     let selected_img;
     let gk_state;
     let df_state;

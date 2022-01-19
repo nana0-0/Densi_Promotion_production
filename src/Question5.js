@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import height_img from "./assets/img/height-img.svg";
 import height_img_memori from "./assets/img/height-omg-memori.png";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import { atom, useRecoilState } from "recoil";
+
+export const HeightState = atom({
+    key: "height",
+    default: 160,
+});
+
 
 function Question5() {
-    const { context, setContext } = useContext(GlobalContext);
-    const [height, setHeight] = useState(160);
-
-    context.height = height;
+    const [height, setHeight] = useRecoilState(HeightState)
 
     let ratio_style;
     let raito_init = "50%";

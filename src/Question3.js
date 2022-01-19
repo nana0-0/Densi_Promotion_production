@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import confidence_img from "./assets/img/confidence-img.svg";
 import on_img from "./assets/img/on-img.svg";
 import off_img from "./assets/img/off-img.svg";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+import {atom, useRecoilState} from "recoil";
+
+export const ConfidenceState = atom({
+    key: "confidence",
+    default: true,
+})
 
 function Question3() {
-    const { context, setContext } = useContext(GlobalContext);
-    const [confidence, setConfidence] = useState(true);
-
-    context.confidence = confidence;
+    const [confidence, setConfidence] = useRecoilState(ConfidenceState);
 
     let confidence_alt = confidence === true ? "あり" : "なし";
     let sheets = document.styleSheets;

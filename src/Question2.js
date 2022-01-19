@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import woman_img from "./assets/img/woman-img.svg";
 import male_img from "./assets/img/male-img.svg";
-import { useContext} from "react";
-import { GlobalContext } from "./index.js";
+import {atom, useRecoilState} from "recoil";
 
+export const GenderState = atom({
+    key: "gender",
+    default: "male",
+})
 function Question2() {
-    const { context, setContext } = useContext(GlobalContext);
-    const [gender, setGender] = useState("male");
-
-    context.gender = gender;
-
+    const [gender, setGender] = useRecoilState(GenderState);
+    
     let gender_img = gender === "woman" ? woman_img : male_img;
     let gender_alt = gender === "woman" ? "女性" : "男性";
 

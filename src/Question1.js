@@ -1,21 +1,22 @@
-import React from "react";
+import {React, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
 import japan_img from "./assets/img/question1_japanimg.svg";
 import oosaka_img from "./assets/img/question1_oosaka.png";
 import tokyo_img from "./assets/img/question1_tokyo.png";
 import chiba_img from "./assets/img/question1_chiba.png";
 import seiryo_img from "./assets/img/question1_seiryo.png";
-import selected_img_bg from "./assets/img/question-img-circle-bg.svg";
-import { useContext } from "react";
-import { GlobalContext } from "./index.js";
+import {atom, useRecoilState } from "recoil";
+
+export const PrefectureState = atom({
+    key:"prefecture",
+    default:"oosaka",
+});
+
 
 
 function Question1() {
-    const { context, setContext } = useContext(GlobalContext);
+    const [select, setSelect] = useRecoilState(PrefectureState);
     const toggle = [oosaka_img, seiryo_img, tokyo_img, chiba_img];
-    const [select, setSelect] = useState("oosaka");
-    context.select = select;
     let selected_img;
     let o_state;
     let s_state;
@@ -28,6 +29,11 @@ function Question1() {
 
     let sheets = document.styleSheets;
     let sheet = sheets[sheets.length - 1];
+
+
+    useEffect(() => {
+        console.log(select)
+    },[select])
 
     switch (select) {
         case "oosaka":

@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import time_render_img from "./assets/img/time_render.svg";
-import {useContext} from "react";
-import {GlobalContext} from "./index.js";
+
+import { atom, useRecoilState } from "recoil";
+
+export const CounterState = atom({
+    key: "counter",
+    default: "7.53",
+});
+
 
 function Question4() {
-    const { context, setContext } = useContext(GlobalContext);
-    const [counter, setCounter] = useState("7.53");
-
-    context.counter = counter;
-
+    const [counter, setCounter] = useRecoilState(CounterState)
     return (
         <>
             <main className="queation-wrapper">
