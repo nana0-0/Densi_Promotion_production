@@ -68,19 +68,19 @@ function Result() {
     const [btn_toggle, setBtn_toggle] = useState("");
     const [check_btn_toggle, setCheckbtn_toggle] = useState("");
 
-    // スライダーの初期値
-    gsap.from(".fead_img", { x: 0 });
-    gsap.from(".fead_text", { x: 0 });
-    gsap.from(".check_section", { x: 0 });
+
 
     // スライダーのエフェクト
     useEffect(() => {
+        gsap.from(".fead_img", { x: 0 });
+        gsap.from(".fead_text", { x: 0 });
+        gsap.from(".check_section", { x: 0 });
         check_btn_toggle === "check_right"
             ? gsap.from(".check_section", { x: -350 })
-            : console.log("");
+            : "";
         check_btn_toggle === "check_left"
             ? gsap.from(".check_section", { x: 150 })
-            : console.log("");
+            :"";
         if (btn_toggle === "right") {
             gsap.from(".fead_img", { x: -350 });
             gsap.from(".fead_text", { x: -350 });
@@ -172,8 +172,6 @@ function Result() {
             check_img.push(data.check.img[i]);
         }
     });
-
-    console.log(check_slider_p);
     return (
         <>
             <>

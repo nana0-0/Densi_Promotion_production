@@ -31,9 +31,9 @@ function Question1() {
     let sheet = sheets[sheets.length - 1];
 
 
-    useEffect(() => {
-        console.log(select)
-    },[select])
+    // useEffect(() => {
+    //     console.log(select)
+    // },[select])
 
     switch (select) {
         case "oosaka":

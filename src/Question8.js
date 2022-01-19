@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { atom, useRecoilState, useSetRecoilState } from "recoil";
 
 export const TrackingState = atom({
@@ -69,7 +69,10 @@ export const PagetopState = atom({
 
 function Question8() {
     const setPagetop = useSetRecoilState(PagetopState);
-    setPagetop(true);
+
+    useEffect(() => {
+        setPagetop(true);
+    }, []);
 
     const [tracking, setTracking] = useRecoilState(TrackingState);
     const [tracking_style, setTracking_style] = useState("off_style");
