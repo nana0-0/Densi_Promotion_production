@@ -30,7 +30,6 @@ function Question1() {
     let sheets = document.styleSheets;
     let sheet = sheets[sheets.length - 1];
 
-
     // useEffect(() => {
     //     console.log(select)
     // },[select])
